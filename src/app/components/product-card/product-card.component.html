@@ -1,0 +1,142 @@
+<div class="product position-relative" (mouseenter)="productHovered()" (mouseleave)="productUnhovered()">
+
+  <div class="d-flex position-absolute w-100 z-1 text-uppercase">
+    <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
+      <a class="btn btn-pr-transparent w-100 text-center rounded-t-l">
+        <fa-icon [icon]="icons['faHeart']"></fa-icon>
+        любим
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
+      <a class="btn btn-pr-transparent w-100 text-center rounded-t-r">
+        <fa-icon [icon]="icons['faCompress']"></fa-icon>
+        сравни
+      </a>
+    </div>
+    <img src="assets/images/attribute-icons/EkoTex-guarantee.svg" class="position-absolute guarantee" alt="Mattress guarantee">
+    <span class="onsale d-flex align-items-center position-absolute end-0 justify-content-center">
+      <fa-icon [icon]="icons['faArrowDown']"></fa-icon> 80%
+    </span>
+  </div>
+
+  <!--    IMAGES CONTAINER    -->
+  <div class="position-relative">
+    <img src="assets/images/products/matrak-royal-cotton-top.webp" class="img-fluid rounded-top-3" alt="Mattress image">
+    <img src="assets/images/products/matrak-royal-cotton-bottom.jpg" class="img-fluid" alt="Mattress image">
+    <img src="assets/images/badges/badge-new.png" class="position-absolute bottom-0 start-0 pr-badge" alt="Badge">
+  </div>
+
+  <div class="d-flex flex-column px-3">
+    <!--    TODO: ADD RATING !!!     -->
+    <div class="rating"></div>
+
+    <div class="d-flex flex-column px-2">
+      <div class="pr-title-container">
+        <h3 class="pr-title">Royal Cotton</h3>
+      </div>
+      <p class="price">1025,48 лв.</p>
+    </div>
+
+    <div class="attribute-container text-uppercase">
+
+      <!--      ATTRIBUTES ONE ROW      -->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/att-height.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">височина</span>
+            <a class="attribute-description"><span>31 см</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/cat-orthopedic-mattresses.svg" class="attribute-img" alt="Mattress category">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">категория</span>
+            <a class="attribute-description"><span>ортопедични матраци</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!--      ATTRIBUTES ONE ROW      -->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_Masajirasht-Efekt.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">ефект</span>
+            <a class="attribute-description"><span>ортопедичен</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_4Lastichni-Lenti.svg" class="attribute-img" alt="Mattress category">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">калъф</span>
+            <a class="attribute-description"><span>без цип</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!--      ATTRIBUTES ONE ROW      -->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_Terapevtichen-Textil.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">материал</span>
+            <a class="attribute-description"><span>терапевтичен текстил</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">страница</span>
+            <a class="attribute-description"><span>подсилен шев - бие</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex py-2">
+        <div class="col-sm-12 col-md-12 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex-hardness.svg" class="attribute-img" alt="Mattress hardness">
+          </div>
+          <div class="d-flex align-items-center">
+            <span class="attribute-description m-0 pe-1">твърдост:</span>
+            <span class="attribute-description m-0">две нива на твърдост</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex py-2">
+        <div class="col-sm-12 col-md-12 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex-class.svg" class="attribute-img" alt="Mattress hardness">
+          </div>
+          <div class="d-flex align-items-center">
+            <span class="attribute-description m-0 pe-1">клас:</span>
+            <span class="attribute-description m-0">среден</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="w-100">
+    <a class="btn btn-pr-open mt-2 text-uppercase">разгледай</a>
+  </div>
+
+</div>
