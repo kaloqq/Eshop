@@ -1,41 +1,66 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomepageComponent} from "./homepage/homepage.component";
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ViewProductComponent } from './view-product/view-product.component';
-import {RoutingModule} from "./routing.module";
+import {NgModule} from "@angular/core";
+import {AppComponent} from "./app.component";
+import {HomeComponent} from "./pages/home/home.component";
+import {NavbarComponent} from "./modules/layout/navbar/navbar.component";
+import {BrowserModule, provideClientHydration} from "@angular/platform-browser";
 import {RouterModule} from "@angular/router";
-import {NgxPaginationModule} from "ngx-pagination";
+import {AppRoutingModule} from "./app-routing";
+import {FooterComponent} from "./modules/layout/footer/footer.component";
+import {
+  NgbCarousel,
+  NgbCarouselConfig,
+  NgbCarouselModule,
+  NgbDropdownModule,
+  NgbModule,
+  NgbSlide
+} from '@ng-bootstrap/ng-bootstrap';
+import {AboutUsComponent} from "./pages/about-us/about-us.component";
+import {ContactsComponent} from "./pages/contacts/contacts.component";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {PipesModule} from "./pipes/pipes.module";
+import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {DatePipe} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
+
+import {ToastrModule} from "ngx-toastr";
+import {ProductCardComponent} from "./components/product-card/product-card.component";
+import {ProductPageComponent} from "./pages/product-page/product-page.component";
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    HeaderComponent,
-    FooterComponent,
-    ViewProductComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    RoutingModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-  ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+    declarations: [
+      AppComponent,
+      HomeComponent,
+      NavbarComponent,
+      FooterComponent,
+      AboutUsComponent,
+      ContactsComponent,
+      ProductCardComponent,
+      ProductPageComponent
+    ],
+    imports: [
+      BrowserModule,
+      RouterModule,
+      AppRoutingModule,
+      NgbModule,
+      NgbDropdownModule,
+      FontAwesomeModule,
+      PipesModule,
+      FormsModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      ToastrModule.forRoot({
+        positionClass: 'toast-top-right'
+      }),
+      NgbCarouselModule,
+    ],
+    bootstrap: [AppComponent],
+    exports: [
+      NavbarComponent,
+    ],
+    providers: [
+      provideClientHydration(),
+    ]
 })
-
-
-export class AppModule { }
+export class AppModule {}

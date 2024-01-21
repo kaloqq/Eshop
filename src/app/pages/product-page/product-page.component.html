@@ -1,0 +1,297 @@
+<div class="row">
+
+  <div class="col-sm-12 col-md-6">
+    <div class="d-flex align-items-center">
+      <img src="assets/images/attribute-icons/EkoTex-guarantee.svg" class="pp-guarantee">
+      <img src="assets/images/badges/badge-new.png" class="pp-badge">
+    </div>
+
+    <ngb-carousel
+      #carousel
+      [showNavigationIndicators]=false
+      (slide)="onSlideEvent($event)"
+      (slid)="onSlideEvent($event)"
+    >
+      <ng-template ngbSlide id="one" #productCarousel>
+        <img src="assets/images/products/matrak-royal-cotton-top.webp" class="d-block w-100">
+      </ng-template>
+      <ng-template ngbSlide id="two">
+        <img src="assets/images/products/matrak-royal-cotton-bottom.jpg" class="d-block w-100">
+      </ng-template>
+      <ng-template ngbSlide id="three">
+        <img src="assets/images/products/matrak-ekotex-royal-cotton-3.jpg" class="d-block w-100">
+      </ng-template>
+      <ng-template ngbSlide id="four">
+        <img src="assets/images/products/matrak-ekotex-royal-cotton-4.jpg" class="d-block w-100">
+      </ng-template>
+    </ngb-carousel>
+
+    <div class="d-flex my-3">
+      <div class="col-md-3">
+        <img src="assets/images/products/matrak-royal-cotton-top.webp"
+             class="img-fluid pe-3 pointer preview-img"
+             (click)="changeActive('one')"
+             [ngClass]="{'preview-img': activeID != 'one'}"
+        >
+      </div>
+      <div class="col-md-3">
+        <img src="assets/images/products/matrak-royal-cotton-bottom.jpg"
+             class="img-fluid px-3 pointer preview-img"
+             (click)="changeActive('two')"
+             [ngClass]="{'preview-img': activeID != 'two'}"
+        >
+      </div>
+      <div class="col-md-3">
+        <img src="assets/images/products/matrak-ekotex-royal-cotton-3.jpg"
+             class="img-fluid px-3 pointer preview-img"
+             (click)="changeActive('three')"
+             [ngClass]="{'preview-img': activeID != 'three'}"
+        >
+      </div>
+      <div class="col-md-3">
+        <img src="assets/images/products/matrak-ekotex-royal-cotton-4.jpg"
+             class="img-fluid ps-3 pointer preview-img"
+             (click)="changeActive('four')"
+             [ngClass]="{'preview-img': activeID != 'four'}"
+        >
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+<!--  TODO: RATING  -->
+    <div class="pp-rating">&nbsp;</div>
+
+    <div>
+      <h1 class="title text-start">Матрак Royal Cotton</h1>
+      <p class="price mt-2 mb-4">1025,48 лв.</p>
+    </div>
+
+    <div class="attribute-container text-uppercase">
+<!--ATTRIBUTES ONE ROW-->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/att-height.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">височина</span>
+            <a class="attribute-description"><span>31 см</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/cat-orthopedic-mattresses.svg" class="attribute-img" alt="Mattress category">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">категория</span>
+            <a class="attribute-description"><span>ортопедични матраци</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!--      ATTRIBUTES ONE ROW      -->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_Masajirasht-Efekt.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">ефект</span>
+            <a class="attribute-description"><span>ортопедичен</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_4Lastichni-Lenti.svg" class="attribute-img" alt="Mattress category">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">калъф</span>
+            <a class="attribute-description"><span>без цип</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!--      ATTRIBUTES ONE ROW      -->
+      <div class="d-flex border-dashed py-2">
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+            <img src="assets/images/attribute-icons/EkoTex_Terapevtichen-Textil.svg" class="attribute-img" alt="Mattress height">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">материал</span>
+            <a class="attribute-description"><span>терапевтичен текстил</span></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 d-flex">
+          <div class="attribute">
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <span class="attribute-title">страница</span>
+            <a class="attribute-description"><span>подсилен шев - бие</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!--PROGRESS BAR HARDNESS-->
+    <div>
+      <div class="d-flex w-100 align-items-center py-2">
+
+
+    <div class="attribute">
+      <img src="assets/images/attribute-icons/EkoTex-hardness.svg" class="attribute-img" alt="Mattress hardness">
+    </div>
+
+    <div class="d-flex gap-2 w-100">
+      <ngb-progressbar
+        class="progress-hardness"
+        type="success"
+        [value]="i < progressCountHardness ? 100 : i === progressCountHardness ? progressWidthHardness : 0"
+        style="width: calc(100% / 7)"
+        *ngFor="let _ of Array(7); let i = index;"
+      />
+    </div>
+  </div>
+
+<!--PROGRESS BAR CLASS-->
+      <div class="d-flex w-100 align-items-center py-2">
+
+    <div class="attribute">
+      <img src="assets/images/attribute-icons/EkoTex-class.svg" class="attribute-img" alt="Mattress hardness">
+    </div>
+
+    <div class="d-flex gap-2 w-100">
+      <ngb-progressbar
+        class="progress-hardness"
+        type="success"
+        [value]="i < progressCountClass ? 100 : i === progressCountClass ? progressWidthClass : 0"
+        style="width: calc(100% / 7)"
+        *ngFor="let _ of Array(7); let i = index;"
+      />
+    </div>
+  </div>
+
+      <div class="d-flex flex-column mt-5" >
+      <label class="size-label">Матрак Размер</label>
+      <select class="size-select">
+        <option>72/190</option>
+        <option>72/200</option>
+        <option>82/190</option>
+      </select>
+    </div>
+    </div>
+<!-- TODO:PRICE BASED ON THE SIZE OF THE MATTRESS-->
+
+    <div class="d-flex flex-column">
+      <p class="price mb-0 mt-4">912,23 лв.</p>
+      <div class="d-flex gap-2">
+        <div class="d-flex align-items-center border border-1">
+          <button class="decrement" (click)="changeQty('decrement')">-</button>
+          <input class="qty text-center" type="number" [value]="quantity">
+          <button class="increment" (click)="changeQty('increment')">+</button>
+        </div>
+        <button class="btn btn-add-to-cart">Добави в количката</button>
+      </div>
+    </div>
+
+    <div class="d-flex my-3">
+      <div class="col-sm-6 col-md-6 text-center" >
+        <a class="btn favorite">
+          <fa-icon [icon]="icons['faHeart']"></fa-icon>
+          направи любим
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <a class="btn compare">
+          <fa-icon [icon]="icons['faCompress']"></fa-icon>
+          сравни
+        </a>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column">
+      <h2 class="pros"><span>Предимства</span><br> на Матрак Tencel Lux</h2>
+      <div>
+        <p class="composition">Състав:</p>
+        <ul class="pros-list">
+          <li>Прошивка от мемори пяна</li>
+          <li>HR пяна</li>
+          <li>Ортопедична пяна</li>
+          <li>Калъф от луксозен дишащ текстил</li>
+          <li>Прошивка термовата</li>
+          <li>Подсилен борд от луксозен текстил и еко велур</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column">
+      <h2 class="pros"><span>Подобри съня си</span><br> с Матрак Tencel Lux</h2>
+      <div class="d-flex my-3">
+        <div class="col-sm-4 col-md-4 d-flex align-items-center">
+          <img src="assets/images/attribute-icons/free-delivery.svg" class="pros-icon">
+          <h3 class="pros-description mb-0 ms-2"><b>Безплатна</b> доставка</h3>
+        </div>
+        <div class="col-sm-4 col-md-4 d-flex align-items-center">
+          <img src="assets/images/attribute-icons/hundred-nights-test.svg" class="pros-icon">
+          <h3 class="pros-description mb-0 ms-2"><b>100 нощи</b> тест</h3>
+        </div>
+        <div class="col-sm-4 col-md-4 d-flex align-items-center">
+          <img src="assets/images/attribute-icons/15-years-guarantee.svg" class="pros-icon">
+          <h3 class="pros-description mb-0 ms-2"><b>15 години</b> Гаранция</h3>
+        </div>
+      </div>
+    </div>
+
+    <p class="mb-0 product-code">Код на продукта: Няма</p>
+
+  </div>
+
+</div>
+
+<div class="row mt-5">
+  <div class="description">
+    <p><strong>Tencel Lux</strong> комбинира в себе си изящество и комфорт от високо ниво.</p>
+    <p><strong>Трислойното ядро</strong> с възможност за избор степента на твърдост прави този матрак подходящ за всеки. Всичко това подчертано с изчистен и завършен дизайн.</p>
+    <p><strong>Ядрото на Ekotex Tencel Lux White</strong> е изработено от три слоя пяна, като всяка от тях е с различна плътност и твърдост. Това дава възможност за избор на оптимална твърдост, в зависимост от вашите специфични нужди и изисквания.</p>
+    <p><strong>Основната част на ядрото</strong> се състои от ортопедична пяна, с висока плътност и устойчивост на деформации,.Ако сте любител на съня на по-твърда повърхност, в едната страна на матрака е вложена високоеластична HR пяна, която дава оптимална опора на гърба и и таза по-време на сън, не позволява пропадането на по-тежките части.</p>
+    <p><strong>Капитониран с термозащитна вата</strong>, калъфът на Ekotex Tencel Lux White запазва температурата на тялото ви през целият сън. Като предотвратява нежеланото изпотяване и дава предпоставка за по добър сън. </p>
+  </div>
+</div>
+
+<div ngbAccordion class="my-3">
+  <div ngbAccordionItem [collapsed]="true">
+    <div ngbAccordionHeader>
+      <h2>
+        <button class="btn btn-accordion w-100 text-start" ngbAccordionToggle (click)="isExpanded = !isExpanded">
+          <fa-icon [icon]="icons['faChevronUp']" *ngIf="isExpanded" class="chevron"></fa-icon>
+          <fa-icon [icon]="icons['faChevronDown']" *ngIf="!isExpanded" class="chevron"></fa-icon>
+          Доставка и Плащане</button>
+      </h2>
+    </div>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody class="accordion-text">
+        <h5 class="fw-bold">ТРАНСПОРТ</h5>
+        <p>Предлага се ролиран във вакуумна стерилна опаковка за лесно транспортиране и перфектна хигиена.</p>
+
+        <h5 class="fw-bold">ДОСТАВКА</h5>
+        <p>БЕЗПЛАТНА ДОСТАВКА на територията на България! Доставките на територията на България се извършват с куриерска фирма Еконт съобразно работните им графици.</p>
+
+        <h5 class="fw-bold">ГАРАНЦИЯ</h5>
+        <p>до 15 години гаранция и 100 нощи тест период</p>
+
+        <h4 class="fw-bold">* ДЕТСКИ МАТРАЦИ</h4>
+        <h5 class="fw-bold">ТРАНСПОРТ</h5>
+        <p>Предлага се ролиран във вакуумна стерилна опаковка за лесно транспортиране и запазване на антисептичните и хипоалергенните свойства.</p>
+
+        <h5 class="fw-bold">ДОСТАВКА</h5>
+        <p>БЕЗПЛАТНА ДОСТАВКА на територията на България! Доставките на територията на България се извършват с куриерска фирма Еконт съобразно работните им графици.</p>
+      </div>
+    </div>
+  </div>
+</div>

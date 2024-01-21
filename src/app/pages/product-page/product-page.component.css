@@ -1,0 +1,148 @@
+.pp-guarantee {
+  width: 82px;
+  height: 82px;
+}
+
+.pp-badge {
+  height: 48px;
+  width: 90px;
+}
+
+.pp-rating {
+  height: 82px;
+}
+
+.preview-img {
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.preview-img:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.progress-hardness{
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 2px;
+}
+
+::ng-deep .progress-hardness .progress-bar {
+  background-color: var(--products-link-hover) !important;
+}
+
+.size-label {
+  font-size: 15px;
+  color:var(--size-label-color);
+  font-weight: 600;
+}
+
+.size-select {
+  padding: 10px 20px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  width: fit-content !important;
+  text-align: left;
+  color: #222;
+}
+
+.btn-add-to-cart{
+  width: fit-content;
+  font-size: 16px;
+  line-height: 22px;
+  min-width: 90px;
+  border-radius: 3px;
+  background-color: var(--products-link-hover);
+  color: white;
+  font-weight: 700;
+  padding: 10px 15px;
+}
+
+.btn-add-to-cart:hover {
+  background-color:var(--add-to-cart-hover) ;
+}
+
+.qty {
+  width: 2em;
+  height: 35px;
+  border: none;
+}
+
+.qty::-webkit-outer-spin-button,
+.qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.increment, .decrement {
+  border: none;
+  background-color: var(--white-color);
+  margin: 0 10px;
+  padding: 0 8px;
+  border-radius: 5px
+}
+
+.increment:hover, .decrement:hover {
+  background-color: #f4f4f4;
+  width: fit-content;
+  height: fit-content;
+}
+
+.compare, .favorite {
+  text-transform: uppercase;
+  color: var(--sub-gray);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.compare:hover, .favorite:hover {
+  color:var(--product-card-button-hover);
+  transition: color .3s ease;
+}
+
+.pros {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pros span {
+  font-size: 20px;
+}
+
+.composition, .pros-list li {
+  color: var(--sub-gray);
+  font-size: 16px;
+  line-height: 18px;
+  list-style: none;
+}
+
+.pros-list {
+  padding-left: 0;
+}
+
+.pros-list li {
+  padding: 5px 0;
+  text-indent: 0;
+}
+
+.pros-description {
+  font-size:12px;
+  font-weight: 500;
+  color: #525252;
+}
+
+.pros-icon {
+  height: 21px;
+  width: 32px;
+}
+
+.product-code {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--size-label-color)
+}
+
+.accordion-text, .description {
+  color: var(--sub-gray);
+}
