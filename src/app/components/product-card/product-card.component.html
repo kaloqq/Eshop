@@ -15,7 +15,7 @@
     </div>
     <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="position-absolute guarantee" alt="Mattress guarantee">
     <span *ngIf="isPromo" class="onsale d-flex align-items-center position-absolute end-0 justify-content-center">
-      <fa-icon [icon]="icons['faArrowDown']"></fa-icon> 80%
+      <fa-icon [icon]="icons['faArrowDown']"></fa-icon>&nbsp;{{receivedData['sale_percentage']}} %
     </span>
   </div>
 

@@ -1,4 +1,13 @@
-import {ChangeDetectorRef, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild
+} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {DOCUMENT, isPlatformBrowser} from "@angular/common";
@@ -41,13 +50,9 @@ export class HomeComponent implements OnInit{
     data['action'] = 'home_products'
     this.dataService.Get(data).subscribe((res:[]) => {
       this.products = res['data'];
-      this.calculateSalePercent();
       this.detectChanges.detectChanges();
     })
   }
 
-  calculateSalePercent(){
-
-  }
 
 }

@@ -60,9 +60,14 @@ export class ProductCardComponent implements OnInit{
       this.maxPrice = regular[regular.length - 1];
     } else {
       this.isPromo = true;
-      this.minPrice = regular[0];
-      this.maxPrice = regular[regular.length - 1];
+      this.minPrice = promo[0];
+      this.maxPrice = promo[promo.length - 1];
+      this.calculateSalePrice(Number(regular[regular.length -1]), Number(promo[promo.length - 1]));
     }
+  }
+
+  calculateSalePrice(price, promo){
+    this.receivedData['sale_percentage'] = (((price - promo) / price) * 100).toFixed(0);
   }
 
 
