@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'contacts',
     component: ContactsComponent
   },{
-    path: 'product',
+    path: 'product/:id',
     component: ProductPageComponent
   },
   {

@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';;
   providedIn: 'root'
 })
 export class DataService {
-  private REST_API_SERVER = "https://api.coriti.com/index.php";
+  private REST_API_SERVER = "https://opamy.com/eshop/index.php";
 
   constructor(private httpClient: HttpClient) { }
 

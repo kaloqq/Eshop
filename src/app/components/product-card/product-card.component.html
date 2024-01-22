@@ -1,4 +1,4 @@
-<div class="product position-relative" (mouseenter)="productHovered()" (mouseleave)="productUnhovered()">
+<div class="product position-relative" [id]="receivedData['id']" (mouseenter)="productHovered()" (mouseleave)="productUnhovered()">
 
   <div class="d-flex position-absolute w-100 z-1 text-uppercase">
     <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
@@ -13,8 +13,8 @@
         сравни
       </a>
     </div>
-    <img src="assets/images/attribute-icons/EkoTex-guarantee.svg" class="position-absolute guarantee" alt="Mattress guarantee">
-    <span class="onsale d-flex align-items-center position-absolute end-0 justify-content-center">
+    <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="position-absolute guarantee" alt="Mattress guarantee">
+    <span *ngIf="isPromo" class="onsale d-flex align-items-center position-absolute end-0 justify-content-center">
       <fa-icon [icon]="icons['faArrowDown']"></fa-icon> 80%
     </span>
   </div>
@@ -23,7 +23,7 @@
   <div class="position-relative">
     <img src="assets/images/products/matrak-royal-cotton-top.webp" class="img-fluid rounded-top-3" alt="Mattress image">
     <img src="assets/images/products/matrak-royal-cotton-bottom.jpg" class="img-fluid" alt="Mattress image">
-    <img src="assets/images/badges/badge-new.png" class="position-absolute bottom-0 start-0 pr-badge" alt="Badge">
+    <img src="assets/images/badges/badge-new.png" class="position-absolute bottom-0 start-0 size-48px" alt="Badge">
   </div>
 
   <div class="d-flex flex-column px-3">
@@ -32,9 +32,9 @@
 
     <div class="d-flex flex-column px-2">
       <div class="pr-title-container">
-        <h3 class="pr-title">Royal Cotton</h3>
+        <h3 class="pr-title">{{receivedData['name_bg']}}</h3>
       </div>
-      <p class="price">1025,48 лв.</p>
+      <p class="price">{{this.minPrice}} лв. - {{this.maxPrice}} лв.</p>
     </div>
 
     <div class="attribute-container text-uppercase">
@@ -43,21 +43,21 @@
       <div class="d-flex border-dashed py-2">
         <div class="col-sm-6 col-md-6 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/att-height.svg" class="attribute-img" alt="Mattress height">
+            <img src="../../../assets/images/icons/att-height.svg" class="attribute-img" alt="Mattress height">
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">височина</span>
-            <a class="attribute-description"><span>31 см</span></a>
+            <a class="attribute-description"><span>{{receivedData['width_bg']}}</span></a>
           </div>
         </div>
 
         <div class="col-sm-6 col-md-6 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/cat-orthopedic-mattresses.svg" class="attribute-img" alt="Mattress category">
+            <img src="../../../assets/images/icons/cat-orthopedic-mattresses.svg" class="attribute-img" alt="Mattress category">
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">категория</span>
-            <a class="attribute-description"><span>ортопедични матраци</span></a>
+            <a class="attribute-description"><span>{{receivedData['category_name_bg']}}</span></a>
           </div>
         </div>
       </div>
@@ -66,21 +66,21 @@
       <div class="d-flex border-dashed py-2">
         <div class="col-sm-6 col-md-6 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/EkoTex_Masajirasht-Efekt.svg" class="attribute-img" alt="Mattress height">
+            <img src="../../../assets/images/icons/EkoTex_Masajirasht-Efekt.svg" class="attribute-img" alt="Mattress height">
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">ефект</span>
-            <a class="attribute-description"><span>ортопедичен</span></a>
+            <a class="attribute-description"><span>{{receivedData['effect_bg']}}</span></a>
           </div>
         </div>
 
         <div class="col-sm-6 col-md-6 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/EkoTex_4Lastichni-Lenti.svg" class="attribute-img" alt="Mattress category">
+            <img src="../../../assets/images/icons/EkoTex_4Lastichni-Lenti.svg" class="attribute-img" alt="Mattress category">
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">калъф</span>
-            <a class="attribute-description"><span>без цип</span></a>
+            <a class="attribute-description"><span>{{receivedData['cover_bg']}}</span></a>
           </div>
         </div>
       </div>
@@ -89,11 +89,11 @@
       <div class="d-flex border-dashed py-2">
         <div class="col-sm-6 col-md-6 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/EkoTex_Terapevtichen-Textil.svg" class="attribute-img" alt="Mattress height">
+            <img src="../../../assets/images/icons/EkoTex_Terapevtichen-Textil.svg" class="attribute-img" alt="Mattress height">
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">материал</span>
-            <a class="attribute-description"><span>терапевтичен текстил</span></a>
+            <a class="attribute-description"><span>{{receivedData['material_bg']}}</span></a>
           </div>
         </div>
 
@@ -110,11 +110,22 @@
       <div class="d-flex py-2">
         <div class="col-sm-12 col-md-12 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/EkoTex-hardness.svg" class="attribute-img" alt="Mattress hardness">
+            <img src="../../../assets/images/icons/EkoTex-hardness.svg" class="attribute-img" alt="Mattress hardness">
           </div>
-          <div class="d-flex align-items-center">
-            <span class="attribute-description m-0 pe-1">твърдост:</span>
-            <span class="attribute-description m-0">две нива на твърдост</span>
+          <div class="d-flex flex-column justify-content-center w-100">
+            <div class="d-flex">
+              <span class="attribute-description m-0 pe-1">твърдост:</span>
+              <span class="attribute-description m-0">{{receivedData['hardness_bg']}}</span>
+            </div>
+            <div class="d-flex w-100 mt-1 gap-2">
+              <ngb-progressbar
+                class="progress-hardness"
+                type="success"
+                [value]="i < progressCountHardness ? 100 : i === progressCountHardness ? progressWidthHardness : 0"
+                style="width: calc(100% / 7)"
+                *ngFor="let _ of Array(7); let i = index;"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -122,11 +133,22 @@
       <div class="d-flex py-2">
         <div class="col-sm-12 col-md-12 d-flex">
           <div class="attribute">
-            <img src="assets/images/attribute-icons/EkoTex-class.svg" class="attribute-img" alt="Mattress hardness">
+            <img src="../../../assets/images/icons/EkoTex-class.svg" class="attribute-img" alt="Mattress hardness">
           </div>
-          <div class="d-flex align-items-center">
-            <span class="attribute-description m-0 pe-1">клас:</span>
-            <span class="attribute-description m-0">среден</span>
+          <div class="d-flex flex-column justify-content-center w-100">
+            <div class="d-flex">
+              <span class="attribute-description m-0 pe-1">клас:</span>
+              <span class="attribute-description m-0">{{receivedData['class_bg']}}</span>
+            </div>
+            <div class="d-flex w-100 mt-1 gap-2">
+              <ngb-progressbar
+                class="progress-hardness"
+                type="success"
+                [value]="i < progressCountClass ? 100 : i === progressCountClass ? progressWidthClass : 0"
+                style="width: calc(100% / 7)"
+                *ngFor="let _ of Array(7); let i = index;"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -136,7 +158,7 @@
   </div>
 
   <div class="w-100">
-    <a class="btn btn-pr-open mt-2 text-uppercase">разгледай</a>
+    <a class="btn btn-pr-open mt-2 text-uppercase" (click)="navigateProduct(receivedData['id'])" #btnElement>разгледай</a>
   </div>
 
 </div>

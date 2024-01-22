@@ -1,6 +1,7 @@
-import {AfterRenderRef, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
-import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {DOCUMENT, isPlatformBrowser} from "@angular/common";
+import {AfterRenderRef, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {faBars, faMagnifyingGlass, faRightLeft} from "@fortawesome/free-solid-svg-icons";
+import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
+import {NgbCarousel, NgbDropdown} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-navbar',
@@ -8,33 +9,31 @@ import {DOCUMENT, isPlatformBrowser} from "@angular/common";
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit{
-  public selectedLanguage:any = '';
-  public isOpen:boolean = false;
+  @ViewChild('sale', { static: true, read: NgbDropdown }) sale: NgbDropdown;
+  @ViewChild('categories', { static: true, read: NgbDropdown }) categories: NgbDropdown;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object,
-  ) {
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.document.defaultView?.localStorage.getItem('language')) {
-        this.selectedLanguage = this.document.defaultView?.localStorage.getItem('language');
-      } else {
-        this.selectedLanguage = this.document.defaultView?.localStorage.setItem('language', 'EN');
-        this.selectedLanguage = 'EN';
-      }
-    }
-  }
 
   icons = {
-    'faBars': faBars
+    'faMagnifyingGlass': faMagnifyingGlass,
+    'faRightLeft': faRightLeft,
+    'faHeart': faHeart,
+    'faUser': faUser,
   }
+
+  constructor(
+  ) {
+  }
+
 
   ngOnInit() {
   }
 
-  changeLanguage(value:string) {
-    this.selectedLanguage = value;
-    this.document.defaultView?.localStorage.setItem('language', this.selectedLanguage);
-    this.document.defaultView?.location.reload();
+  saleHover(value){
+    if(value === 'sale'){
+      this.sale.toggle();
+    } else if (value === 'categories'){
+      this.categories.toggle();
+    }
   }
+
 }

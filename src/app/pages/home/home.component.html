@@ -1,21 +1,154 @@
-<section>
+<!--HERO-->
+<section class="hero">
+  <div class="h-100 d-flex flex-column justify-content-between">
+    <div class="container d-flex h-100 flex-column justify-content-center">
+      <h1>Висококачествени Матраци <br> & Продукти за Сън</h1>
+      <span class="fs-3 fw-bold mt-3">ДО <span class="headline-accent mx-3 fw-bolder">-80% </span>НАМАЛЕНИЕ</span>
+      <div class="d-flex mt-5">
+        <button class="btn btn-primary me-3">
+          <img src="assets/images/icons/EkoTex-hero-matress.svg" class="btn-icon">МАТРАЦИ</button>
+        <button class="btn btn-secondary">
+          <img src="assets/images/icons/EkoTex-hero-top-mattresses.svg" class="btn-icon">ТОП МАТРАЦИ</button>
+      </div>
+    </div>
+
+    <div class="text-end mb-4 me-3">
+      <img src="assets/images/common/silvia-signature.svg" class="col-1">
+      <div>
+        <span class="fs-12px">Препоръчано от Силвия Петкова</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--BANNER-->
+
+<div class="bg-white">
+  <div class="container">
+    <div class="d-flex gap-3 py-4">
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/free-delivery.svg" class="banner-icon size-48px">
+        <p class="title-sub"><b>Безплатна</b> доставка</p>
+      </div>
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/hundred-nights-test.svg" class="banner-icon size-48px">
+        <p class="title-sub"><b>100 нощи</b> тест</p>
+      </div>
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/EkoTex-warranty.svg" class="banner-icon size-48px">
+        <p class="title-sub"><b>15 год.</b> гаранция</p>
+      </div>
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/safe-payment.svg" class="banner-icon size-48px">
+        <p class="title-sub"><b>Сигурно</b> плащане</p>
+      </div>
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/made-in-bulgaria.svg" class="banner-icon size-48px">
+        <p class="title-sub">100% <b>Български</b></p>
+      </div>
+
+      <div class="col-sm-4 col-md-2 text-center">
+        <img src="./assets/images/icons/clients.svg" class="banner-icon size-48px">
+        <p class="title-sub">100К+ <b>Клиенти</b></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--PRODUCT CAROUSEL-->
+
+<section class="bg-subtle-gray py-5">
   <div class="d-flex flex-column">
-    <h2 class="title">Избрани <span class="headline-accent">Матраци</span></h2>
+    <h2 class="text-center">Избрани <span class="headline-accent">Матраци</span></h2>
     <h3 class="title-sub">Произведени в България</h3>
   </div>
 
-  <div class="row">
+  <div class="col-12">
 
+    <ngb-carousel [showNavigationIndicators]=false>
 
-    <div class="col-sm-6 col-md-4">
-      <app-product-card></app-product-card>
-    </div>
-    <div class="col-sm-6 col-md-4">
-      <app-product-card></app-product-card>
-    </div>
-    <div class="col-sm-6 col-md-4">
-      <app-product-card></app-product-card>
-    </div>
+        <ng-template ngbSlide>
+          <div class="d-flex container">
+            <div class="col-sm-6 col-md-4" *ngFor="let pr of products.slice(0, 3)">
+              <app-product-card [receivedData]="pr"></app-product-card>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template ngbSlide>
+          <div class="d-flex container">
+            <div class="col-sm-6 col-md-4" *ngFor="let pr of products.slice(3, 6)">
+              <app-product-card [receivedData]="pr"></app-product-card>
+            </div>
+          </div>
+        </ng-template>
+
+    </ngb-carousel>
+
+  </div>
+  <div class="text-center mt-5">
+    <button class="btn-secondary">
+      <img src="assets/images/icons/mattress-icon.svg" class="btn-icon" alt="Всички матраци">Всички матраци
+    </button>
+  </div>
+
+</section>
+
+<!--SPECIALIZED MATTRESSES-->
+
+<section class="my-5">
+  <h2 class="text-center">Специализирани <span class="headline-accent">Матраци</span></h2>
+  <h3 class="title-sub">Собствено производство</h3>
+
+  <div class="container d-flex justify-content-center mt-5 gap-5">
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/cat-orthopedic-mattresses.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Ортопедични <br>матраци</h3>
+    </a>
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/memory-foam.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Матраци с <br> Мемори Пяна</h3>
+    </a>
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/spring-mattress.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Матраци с <br>Пружини</h3>
+    </a>
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/decubital-mattresses.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Декубитални <br>матраци</h3>
+    </a>
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/children.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Детски <br>матраци</h3>
+    </a>
+
+    <a routerLink="/" class="text-center d-flex flex-column align-items-center">
+      <div class="category mb-3">
+        <img src="assets/images/icons/by-request.svg" class="size-95px">
+      </div>
+        <h3 class="category-sub">Матраци <br>по Поръчка</h3>
+    </a>
 
   </div>
 

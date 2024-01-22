@@ -1,0 +1,12 @@
+.hero {
+  background-image: url("../../../assets/images/common/home-hero-wide.webp");
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.banner-icon{
+  filter: invert(60%) sepia(84%) saturate(5203%) hue-rotate(167deg) brightness(109%) contrast(101%);
+}
+

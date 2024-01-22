@@ -1,0 +1,7 @@
+::ng-deep .progress-hardness .progress-bar {
+  background-color: var(--products-link-hover) !important;
+}
+
+.progress-hardness{
+  border-radius: 2px;
+}

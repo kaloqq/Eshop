@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {faArrowDownLong, faCompress} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
@@ -19,8 +20,19 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ],
   styleUrl: './product-card.component.css'
 })
-export class ProductCardComponent {
-  public isButtonHovered:boolean = false
+export class ProductCardComponent implements OnInit{
+  @ViewChild('btnElement') btn: ElementRef;
+  @Input() receivedData:{} = {};
+  public isButtonHovered:boolean = false;
+  public minPrice:string;
+  public maxPrice:string;
+  public isPromo:boolean;
+  public progressValueHardness:number = 30;
+  public progressCountHardness:number;
+  public progressWidthHardness:number;
+  public progressValueClass:number = 80;
+  public progressCountClass:number;
+  public progressWidthClass:number;
 
   icons = {
     'faHeart': faHeart,
@@ -28,17 +40,60 @@ export class ProductCardComponent {
     'faCompress': faCompress,
   };
 
+  constructor(
+    private router: Router
+  ) {
+  }
+
+  ngOnInit() {
+    this.calculatePrice(this.receivedData);
+    this.calculateProgress(this.progressValueHardness, 'hardness');
+    this.calculateProgress(this.progressValueClass, 'class')
+  }
+
+  calculatePrice(data){
+    let promo = data['promo_bg'].split(',');
+    let regular = data['price_bg'].split(',');
+    if(promo[promo.length - 1] == '0.00' || data['promo_bg'] == ''){
+      this.isPromo = false;
+      this.minPrice = regular[0];
+      this.maxPrice = regular[regular.length - 1];
+    } else {
+      this.isPromo = true;
+      this.minPrice = regular[0];
+      this.maxPrice = regular[regular.length - 1];
+    }
+  }
+
 
   productHovered(){
     this.isButtonHovered = true;
-    let btn = document.querySelector('.btn-pr-open') as HTMLElement;
-    btn.classList.add('btn-pr-open-hovered');
+    let button = this.btn.nativeElement as HTMLElement;
+    button.classList.add('btn-pr-open-hovered');
   }
 
   productUnhovered(){
     this.isButtonHovered = false;
-    let btn = document.querySelector('.btn-pr-open') as HTMLElement;
-    btn.classList.remove('btn-pr-open-hovered');
+    let button = this.btn.nativeElement as HTMLElement;
+    button.classList.remove('btn-pr-open-hovered');
   }
 
+  navigateProduct(id){
+    this.router.navigate(['product',id])
+  }
+
+  calculateProgress(value, element){
+    let ch = 100 / 7;
+    let rest = (value / ch).toFixed(2);
+    let split = rest.split('.');
+    if(element === 'hardness'){
+      this.progressCountHardness = Number(split[0]);
+      this.progressWidthHardness = Number(split[1]);
+    } else if (element === 'class'){
+      this.progressCountClass = Number(split[0]);
+      this.progressWidthClass = Number(split[1]);
+    }
+  }
+
+  protected readonly Array = Array;
 }

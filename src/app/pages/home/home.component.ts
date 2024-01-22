@@ -22,19 +22,32 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
   ]
 })
 export class HomeComponent implements OnInit{
-
+  public products:any[] = [];
 
   constructor(
-    private modalService: NgbModal,
-    private cdr: ChangeDetectorRef,
     private dataService: DataService,
-    private router: Router,
-    @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object,) {
+    private detectChanges: ChangeDetectorRef
+  ) {
   }
 
 
   ngOnInit() {
+    this.getHomeProducts();
+  }
+
+  getHomeProducts(){
+    var data = [];
+    data['controller'] = 'base';
+    data['action'] = 'home_products'
+    this.dataService.Get(data).subscribe((res:[]) => {
+      this.products = res['data'];
+      this.calculateSalePercent();
+      this.detectChanges.detectChanges();
+    })
+  }
+
+  calculateSalePercent(){
+
   }
 
 }
