@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {faHeart} from "@fortawesome/free-regular-svg-icons";
-import {faArrowDownLong, faCompress} from "@fortawesome/free-solid-svg-icons";
+import {faHeart, faStar} from "@fortawesome/free-regular-svg-icons";
+import {faArrowDownLong, faCompress, faStar as faStarSolid} from "@fortawesome/free-solid-svg-icons";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {Router} from "@angular/router";
 
@@ -21,7 +21,6 @@ import {Router} from "@angular/router";
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent implements OnInit{
-  @ViewChild('btnElement') btn: ElementRef;
   @Input() receivedData:{} = {};
   public isButtonHovered:boolean = false;
   public minPrice:string;
@@ -33,11 +32,13 @@ export class ProductCardComponent implements OnInit{
   public progressValueClass:number;
   public progressCountClass:number;
   public progressWidthClass:number;
-
+  public starRating:number = 3.7;
   icons = {
     'faHeart': faHeart,
     'faArrowDown': faArrowDownLong,
     'faCompress': faCompress,
+    'faStar': faStar,
+    'faStarSolid': faStarSolid,
   };
 
   constructor(
@@ -46,7 +47,6 @@ export class ProductCardComponent implements OnInit{
   }
 
   ngOnInit() {
-    console.log(this.receivedData);
     this.calculatePrice(this.receivedData);
     this.progressValueHardness = this.receivedData['bar1'];
     this.progressValueClass = this.receivedData['bar2'];
@@ -75,15 +75,7 @@ export class ProductCardComponent implements OnInit{
 
 
   productHovered(){
-    this.isButtonHovered = true;
-    let button = this.btn.nativeElement as HTMLElement;
-    button.classList.add('btn-pr-open-hovered');
-  }
-
-  productUnhovered(){
-    this.isButtonHovered = false;
-    let button = this.btn.nativeElement as HTMLElement;
-    button.classList.remove('btn-pr-open-hovered');
+    this.isButtonHovered = !this.isButtonHovered;
   }
 
   navigateProduct(id){

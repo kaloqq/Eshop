@@ -146,3 +146,9 @@
 .accordion-text, .description {
   color: var(--sub-gray);
 }
+
+.price-sale {
+  color: var(--products-link-hover);
+  font-size: 20px;
+  font-weight: 700;
+}

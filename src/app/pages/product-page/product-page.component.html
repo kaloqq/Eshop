@@ -1,10 +1,29 @@
+
+<div class="container d-flex align-items-center gap-5">
+    <div class="col-sm-12 col-md-6">
+      <div class="d-flex align-items-center">
+        <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="pp-guarantee">
+        <img src="assets/images/badges/badge-new.png" class="pp-badge">
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center">
+          <div *ngFor="let _ of Array(5), let i = index">
+            <fa-icon [icon]="icons['faStar']" *ngIf="starRating <= i + 1"></fa-icon>
+            <fa-icon [icon]="icons['faStarSolid']" class="star-fill" *ngIf="starRating > i + 1"></fa-icon>
+          </div>
+        </div>
+        <span class="text-muted fs-12px ms-2">({{starRating}})</span>
+      </div>
+    </div>
+</div>
+
 <div class="container d-flex gap-5">
 
   <div class="col-sm-12 col-md-6">
-    <div class="d-flex align-items-center">
-      <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="pp-guarantee">
-      <img src="assets/images/badges/badge-new.png" class="pp-badge">
-    </div>
+
 
     <ngb-carousel
       #carousel
@@ -12,38 +31,17 @@
       (slide)="onSlideEvent($event)"
       (slid)="onSlideEvent($event)"
     >
-      <ng-template ngbSlide id="pic.id" *ngFor="let pic of productData['pictures']">
+      <ng-template ngbSlide id="{{pic.id}}" *ngFor="let pic of productData['pictures']">
         <img [src]="pic.picture" class="d-block w-100">
       </ng-template>
     </ngb-carousel>
 
     <div class="d-flex my-3">
-      <div class="col-md-3">
-        <img src="assets/images/products/matrak-royal-cotton-top.webp"
+      <div class="col-md-3" *ngFor="let pic of productData['pictures']">
+        <img [src]="pic.picture"
              class="img-fluid pe-3 pointer preview-img"
-             (click)="changeActive('one')"
-             [ngClass]="{'preview-img': activeID != 'one'}"
-        >
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/products/matrak-royal-cotton-bottom.jpg"
-             class="img-fluid px-3 pointer preview-img"
-             (click)="changeActive('two')"
-             [ngClass]="{'preview-img': activeID != 'two'}"
-        >
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/products/matrak-ekotex-royal-cotton-3.jpg"
-             class="img-fluid px-3 pointer preview-img"
-             (click)="changeActive('three')"
-             [ngClass]="{'preview-img': activeID != 'three'}"
-        >
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/products/matrak-ekotex-royal-cotton-4.jpg"
-             class="img-fluid ps-3 pointer preview-img"
-             (click)="changeActive('four')"
-             [ngClass]="{'preview-img': activeID != 'four'}"
+             (click)="changeActive(pic.id)"
+             [ngClass]="{'preview-img': activeID != pic.id}"
         >
       </div>
     </div>
@@ -51,11 +49,9 @@
   </div>
 
   <div class="col-sm-12 col-md-6">
-<!--  TODO: RATING  -->
-    <div class="pp-rating">&nbsp;</div>
 
     <div>
-      <h1 class="text-start fs-2">Матрак Royal Cotton</h1>
+      <h1 class="text-start fs2">{{productData.info['name_bg']}}</h1>
       <p class="price mt-2 mb-4">1025,48 лв.</p>
     </div>
 
@@ -68,7 +64,7 @@
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">височина</span>
-            <a class="attribute-description"><span>31 см</span></a>
+            <a class="attribute-description"><span>{{productData.info['width_bg']}}</span></a>
           </div>
         </div>
 
@@ -78,7 +74,7 @@
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">категория</span>
-            <a class="attribute-description"><span>ортопедични матраци</span></a>
+            <a class="attribute-description"><span>{{productData.category['name_bg']}}</span></a>
           </div>
         </div>
       </div>
@@ -91,7 +87,7 @@
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">ефект</span>
-            <a class="attribute-description"><span>ортопедичен</span></a>
+            <a class="attribute-description"><span>{{productData.info['effect_bg']}}</span></a>
           </div>
         </div>
 
@@ -101,7 +97,7 @@
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">калъф</span>
-            <a class="attribute-description"><span>без цип</span></a>
+            <a class="attribute-description"><span>{{productData.info['cover_bg']}}</span></a>
           </div>
         </div>
       </div>
@@ -114,7 +110,7 @@
           </div>
           <div class="d-flex flex-column justify-content-center">
             <span class="attribute-title">материал</span>
-            <a class="attribute-description"><span>терапевтичен текстил</span></a>
+            <a class="attribute-description"><span>{{productData.info['material_bg']}}</span></a>
           </div>
         </div>
 
@@ -122,8 +118,8 @@
           <div class="attribute">
           </div>
           <div class="d-flex flex-column justify-content-center">
-            <span class="attribute-title">страница</span>
-            <a class="attribute-description"><span>подсилен шев - бие</span></a>
+            <span class="attribute-title">гаранция</span>
+            <a class="attribute-description"><span>{{productData.info['guarantee']}}</span></a>
           </div>
         </div>
       </div>
@@ -168,19 +164,20 @@
     </div>
   </div>
 
+<!--TODO: NEEDS OPTIONS VALUES-->
       <div class="d-flex flex-column mt-5" >
-      <label class="size-label">Матрак Размер</label>
-      <select class="size-select">
-        <option>72/190</option>
-        <option>72/200</option>
-        <option>82/190</option>
+      <label class="size-label">{{productData.features.featureA.info['name_bg']}}</label>
+      <select class="size-select" (change)="changePrice()" [(ngModel)]="selectedFeatureA">
+        <option [value]="opt.id"  *ngFor="let opt of productData.features.featureA.options">72/190</option>
       </select>
     </div>
     </div>
-<!-- TODO:PRICE BASED ON THE SIZE OF THE MATTRESS-->
 
     <div class="d-flex flex-column">
-      <p class="price mb-0 mt-4">912,23 лв.</p>
+      <div class="d-flex align-items-center">
+        <p class="price mb-0 mt-4 me-2" [ngClass]="{'text-decoration-line-through': newPrices['promo'] != undefined}">{{newPrices['regular']}} лв.</p>
+        <p class="price-sale mb-0 mt-4" *ngIf="newPrices['promo'] != undefined">{{newPrices['promo']}} лв.</p>
+      </div>
       <div class="d-flex gap-2">
         <div class="d-flex align-items-center border border-1">
           <button class="decrement" (click)="changeQty('decrement')">-</button>
@@ -238,7 +235,7 @@
         </div>
       </div>
     </div>
-
+<!--TODO: ADD PRODUCT CODE-->
     <p class="mb-0 product-code">Код на продукта: Няма</p>
 
   </div>

@@ -1,21 +1,10 @@
 import {
   ChangeDetectorRef,
   Component,
-  ElementRef,
-  HostListener,
-  Inject,
   OnInit,
-  PLATFORM_ID,
-  ViewChild
 } from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {animate, style, transition, trigger} from "@angular/animations";
-import {DOCUMENT, isPlatformBrowser} from "@angular/common";
 import {DataService} from "../../data.service";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {filter} from "rxjs";
-import {faArrowDownLong, faChevronLeft, faChevronRight, faCompress} from "@fortawesome/free-solid-svg-icons";
-import {faHeart} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-home',
@@ -32,10 +21,11 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
 })
 export class HomeComponent implements OnInit{
   public products:any[] = [];
+  public isCatHovered:boolean = false;
 
   constructor(
     private dataService: DataService,
-    private detectChanges: ChangeDetectorRef
+    private detectChanges: ChangeDetectorRef,
   ) {
   }
 
@@ -54,5 +44,8 @@ export class HomeComponent implements OnInit{
     })
   }
 
+  catHovered(){
+    this.isCatHovered = !this.isCatHovered;
+  }
 
 }

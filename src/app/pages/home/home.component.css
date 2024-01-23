@@ -13,3 +13,73 @@
 ::ng-deep .product-carousel .carousel-control-prev, ::ng-deep .product-carousel .carousel-control-next {
   width: 5% !important;
 }
+
+.monthly-banner {
+  background-image: url("/assets/images/common/monthly-banner.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 500px;
+}
+
+.monthly-banner2 {
+  background-image: url("/assets/images/common/monthly-banner2.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 500px;
+}
+
+.cat-box {
+  border-radius: 12px;
+  background-color: var(--products-link-hover);
+  margin: 0 0 30px 0;
+  top: 20px;
+  bottom: auto;
+  left: 30px;
+  right: auto;
+  width: auto !important;
+  min-width: auto;
+  transition: all 1s;
+}
+
+.cat-box-content {
+  padding: 8px 15px;
+  transition: all 1s;
+}
+
+.chess-row {
+  min-height: 480px;
+}
+
+.chess-bg-1 {
+  background-image: url("/assets/images/common/matrak-po-porachka-background-768x419.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+  min-height: 480px;
+}
+
+.chess-bg-2 {
+  background-image: url("/assets/images/common/home-sleepingguide-1.jpg.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+  min-height: 720px;
+}
+
+.chess-bg-3 {
+  background-color: var(--product-card-button-hover);
+  min-height: 480px;
+}
+
+.by-req {
+  padding: 60px 120px;
+  border-radius: 12px;
+}
+
+.by-req-c {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
