@@ -1,4 +1,4 @@
-<div class="product position-relative" [id]="receivedData['id']" (mouseenter)="productHovered()" (mouseleave)="productUnhovered()">
+<div class="product position-relative my-3" [id]="receivedData['id']" (mouseenter)="productHovered()" (mouseleave)="productUnhovered()">
 
   <div class="d-flex position-absolute w-100 z-1 text-uppercase">
     <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
@@ -14,15 +14,16 @@
       </a>
     </div>
     <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="position-absolute guarantee" alt="Mattress guarantee">
-    <span *ngIf="isPromo" class="onsale d-flex align-items-center position-absolute end-0 justify-content-center">
+    <span *ngIf="isPromo" class="onsale d-flex align-items-center position-absolute z-3 justify-content-center">
       <fa-icon [icon]="icons['faArrowDown']"></fa-icon>&nbsp;{{receivedData['sale_percentage']}} %
     </span>
   </div>
 
   <!--    IMAGES CONTAINER    -->
-  <div class="position-relative">
-    <img src="assets/images/products/matrak-royal-cotton-top.webp" class="img-fluid rounded-top-3" alt="Mattress image">
-    <img src="assets/images/products/matrak-royal-cotton-bottom.jpg" class="img-fluid" alt="Mattress image">
+  <div class="position-relative img-container">
+    <a (click)="navigateProduct(receivedData['id'])" class="pointer">
+      <img [src]="receivedData['picture']" class="img-fluid rounded-top-3" alt="Mattress image">
+    </a>
     <img src="assets/images/badges/badge-new.png" class="position-absolute bottom-0 start-0 size-48px" alt="Badge">
   </div>
 
@@ -30,9 +31,9 @@
     <!--    TODO: ADD RATING !!!     -->
     <div class="rating"></div>
 
-    <div class="d-flex flex-column px-2">
+    <div class="d-flex flex-column px-2 mt-3">
       <div class="pr-title-container">
-        <h3 class="pr-title">{{receivedData['name_bg']}}</h3>
+        <a (click)="navigateProduct(receivedData['id'])" class="pointer"><h3 class="pr-title">{{receivedData['name_bg']}}</h3></a>
       </div>
       <p class="price">{{this.minPrice}} лв. - {{this.maxPrice}} лв.</p>
     </div>
@@ -101,7 +102,7 @@
           <div class="attribute">
           </div>
           <div class="d-flex flex-column justify-content-center">
-            <span class="attribute-title">страница</span>
+            <span class="attribute-title">гаранция</span>
             <a class="attribute-description"><span>подсилен шев - бие</span></a>
           </div>
         </div>

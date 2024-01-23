@@ -40,46 +40,15 @@
 
   </div>
 
-  <div class="container d-flex align-items-center justify-content-between h-65px">
-<!--PRODUCTS ON SALE-->
-      <div ngbDropdown class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
-        <span class="fw-bolder pointer" ngbDropdownToggle >
-        <img src="assets/images/icons/sale.svg" class="btn-icon m-0">
-          Промоции
-        </span>
-        <div ngbDropdownMenu aria-labelledby="mattresses">
-          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-            <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
-            Матраци в промоция</a>
-          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-            <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
-            Топ матраци в промоция</a>
-          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-            <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
-            Възглавници в промоция</a>
-          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-            <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
-            Спално бельо в промоция</a>
-          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-            <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
-            Аксесоари в промоция</a>
-        </div>
-      </div>
-
-<!--SEARCH-->
-    <div class="d-flex align-items-center w-25">
-      <input type="search" placeholder="Търси" class="nav-search">
-      <fa-icon [icon]="icons['faMagnifyingGlass']" class="search-icon"></fa-icon>
-    </div>
-
-<!--MAIN MENU-->
-
-      <div class="d-flex align-items-center">
-        <div ngbDropdown class="d-flex align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
-        <span class="fw-bolder pointer" ngbDropdownToggle >
-          Категории
-        </span>
-          <div ngbDropdownMenu aria-labelledby="categories">
+  <div class=" border-bottom border-light-subtle">
+    <div class="container d-flex align-items-center justify-content-between h-65px">
+  <!--PRODUCTS ON SALE-->
+        <div ngbDropdown class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
+          <span class="fw-bolder pointer" ngbDropdownToggle >
+          <img src="assets/images/icons/sale.svg" class="btn-icon m-0">
+            Промоции
+          </span>
+          <div ngbDropdownMenu aria-labelledby="mattresses">
             <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
               <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
               Матраци в промоция</a>
@@ -97,8 +66,40 @@
               Аксесоари в промоция</a>
           </div>
         </div>
+
+  <!--SEARCH-->
+      <div class="d-flex align-items-center w-25">
+        <input type="search" placeholder="Търси" class="nav-search">
+        <fa-icon [icon]="icons['faMagnifyingGlass']" class="search-icon"></fa-icon>
       </div>
 
-  </div>
+  <!--MAIN MENU-->
 
+        <div class="d-flex align-items-center">
+          <div ngbDropdown class="d-flex align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
+          <span class="fw-bolder pointer" ngbDropdownToggle >
+            Категории
+          </span>
+            <div ngbDropdownMenu aria-labelledby="categories">
+              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
+                Матраци в промоция</a>
+              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
+                Топ матраци в промоция</a>
+              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
+                Възглавници в промоция</a>
+              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
+                Спално бельо в промоция</a>
+              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
+                Аксесоари в промоция</a>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
 </nav>

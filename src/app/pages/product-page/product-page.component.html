@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container d-flex gap-5">
 
   <div class="col-sm-12 col-md-6">
     <div class="d-flex align-items-center">
@@ -12,17 +12,8 @@
       (slide)="onSlideEvent($event)"
       (slid)="onSlideEvent($event)"
     >
-      <ng-template ngbSlide id="one">
-        <img src="assets/images/products/matrak-royal-cotton-top.webp" class="d-block w-100">
-      </ng-template>
-      <ng-template ngbSlide id="two">
-        <img src="assets/images/products/matrak-royal-cotton-bottom.jpg" class="d-block w-100">
-      </ng-template>
-      <ng-template ngbSlide id="three">
-        <img src="assets/images/products/matrak-ekotex-royal-cotton-3.jpg" class="d-block w-100">
-      </ng-template>
-      <ng-template ngbSlide id="four">
-        <img src="assets/images/products/matrak-ekotex-royal-cotton-4.jpg" class="d-block w-100">
+      <ng-template ngbSlide id="pic.id" *ngFor="let pic of productData['pictures']">
+        <img [src]="pic.picture" class="d-block w-100">
       </ng-template>
     </ngb-carousel>
 
@@ -254,7 +245,7 @@
 
 </div>
 
-<div class="row mt-5">
+<div class="container mt-5">
   <div class="description">
     <p><strong>Tencel Lux</strong> комбинира в себе си изящество и комфорт от високо ниво.</p>
     <p><strong>Трислойното ядро</strong> с възможност за избор степента на твърдост прави този матрак подходящ за всеки. Всичко това подчертано с изчистен и завършен дизайн.</p>
@@ -264,7 +255,7 @@
   </div>
 </div>
 
-<div ngbAccordion class="my-3">
+<div ngbAccordion class="my-3 container">
   <div ngbAccordionItem [collapsed]="true">
     <div ngbAccordionHeader>
       <h2>

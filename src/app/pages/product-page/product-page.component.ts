@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel} from "@ng-bootstrap/ng-bootstrap";
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {faArrowDownLong, faChevronDown, faChevronUp, faCompress} from "@fortawesome/free-solid-svg-icons";
+import {DataService} from "../../data.service";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -10,12 +12,14 @@ import {faArrowDownLong, faChevronDown, faChevronUp, faCompress} from "@fortawes
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent implements OnInit{
-  public activeID:string = 'one';
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
-  public progressValueHardness:number = 30;
+  public productID = this.route.snapshot.paramMap.get('id');
+  public productData:any = [];
+  public activeID:string = 'one';
+  public progressValueHardness:number;
   public progressCountHardness:number;
   public progressWidthHardness:number;
-  public progressValueClass:number = 80;
+  public progressValueClass:number;
   public progressCountClass:number;
   public progressWidthClass:number;
   public quantity:number = 1;
@@ -29,12 +33,25 @@ export class ProductPageComponent implements OnInit{
   };
 
   constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
+    this.getProductData();
     this.calculateProgress(this.progressValueHardness, 'hardness');
     this.calculateProgress(this.progressValueClass,'class');
+  }
+
+  getProductData(){
+    var data = [];
+    data['controller'] = 'base';
+    data['action'] = 'product';
+    data['id'] = this.productID;
+    this.dataService.Get(data).subscribe((res) => {
+      this.productData= res['data'];
+    })
   }
 
   onSlideEvent(value){

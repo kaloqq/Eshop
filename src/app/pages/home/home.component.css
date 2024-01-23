@@ -10,3 +10,6 @@
   filter: invert(60%) sepia(84%) saturate(5203%) hue-rotate(167deg) brightness(109%) contrast(101%);
 }
 
+::ng-deep .product-carousel .carousel-control-prev, ::ng-deep .product-carousel .carousel-control-next {
+  width: 5% !important;
+}

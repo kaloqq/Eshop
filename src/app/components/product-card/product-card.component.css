@@ -5,3 +5,7 @@
 .progress-hardness{
   border-radius: 2px;
 }
+
+.img-container{
+  min-height: 275px;
+}

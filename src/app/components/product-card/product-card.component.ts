@@ -27,10 +27,10 @@ export class ProductCardComponent implements OnInit{
   public minPrice:string;
   public maxPrice:string;
   public isPromo:boolean;
-  public progressValueHardness:number = 30;
+  public progressValueHardness:number;
   public progressCountHardness:number;
   public progressWidthHardness:number;
-  public progressValueClass:number = 80;
+  public progressValueClass:number;
   public progressCountClass:number;
   public progressWidthClass:number;
 
@@ -46,7 +46,10 @@ export class ProductCardComponent implements OnInit{
   }
 
   ngOnInit() {
+    console.log(this.receivedData);
     this.calculatePrice(this.receivedData);
+    this.progressValueHardness = this.receivedData['bar1'];
+    this.progressValueClass = this.receivedData['bar2'];
     this.calculateProgress(this.progressValueHardness, 'hardness');
     this.calculateProgress(this.progressValueClass, 'class')
   }
