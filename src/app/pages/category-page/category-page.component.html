@@ -1,0 +1,49 @@
+
+<div class="bg-subtle-gray">
+
+  <div class="container-fluid py-4">
+
+    <div class="row bg-white px-5 py-2">
+
+      <div class="col-md-6 col-sm-12">
+        <h1 class="fs-3">{{categoryInfo[categoryName === 'bed-linen' ? 'bedLinen' : categoryName === 'top-mattresses' ? 'topMattresses' : categoryName].heading}}</h1>
+        <p class="text-muted">{{categoryInfo[categoryName === 'bed-linen' ? 'bedLinen' : categoryName === 'top-mattresses' ? 'topMattresses' : categoryName].description}}</p>
+        <a class="text-light-green">Виж повече</a>
+      </div>
+
+      <div class="col-md-6 col-sm-12 d-flex justify-content-end align-items-center">
+        <div class="d-flex justify-content-center align-items-center cat-icon-c">
+          <img class="cat-icon" [src]="categoryInfo[categoryName === 'bed-linen' ? 'bedLinen' : categoryName === 'top-mattresses' ? 'topMattresses' : categoryName].icon">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-5">
+
+
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+<!--TODO: ADD FILTERS-->
+      </div>
+
+      <div class="col-sm-12 col-md-9">
+        <div class="d-flex">
+          <p class="text-muted">Показване на {{itemsPerPage > products.length ? products.length : itemsPerPage}} от {{products.length}} резултата</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" *ngFor="let pr of products | paginate: pagingConfig">
+            <app-product-card [receivedData]="pr"></app-product-card>
+          </div>
+          <pagination-controls class="pagination mt-3"
+                               previousLabel="Previous"
+                               nextLabel="Next"
+                               (pageChange)="onTableDataChange($event)"
+                               [autoHide]=true
+                               [responsive]="true">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

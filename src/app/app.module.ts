@@ -11,7 +11,7 @@ import {
   NgbCarouselConfig,
   NgbCarouselModule,
   NgbDropdownModule,
-  NgbModule,
+  NgbModule, NgbPagination,
   NgbSlide
 } from '@ng-bootstrap/ng-bootstrap';
 import {AboutUsComponent} from "./pages/about-us/about-us.component";
@@ -25,6 +25,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
 import {ProductCardComponent} from "./components/product-card/product-card.component";
 import {ProductPageComponent} from "./pages/product-page/product-page.component";
+import {LoginRegisterComponent} from "./modals/login-register/login-register.component";
+import {CategoryPageComponent} from "./pages/category-page/category-page.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -37,7 +40,9 @@ import {ProductPageComponent} from "./pages/product-page/product-page.component"
       AboutUsComponent,
       ContactsComponent,
       ProductCardComponent,
-      ProductPageComponent
+      ProductPageComponent,
+      LoginRegisterComponent,
+      CategoryPageComponent,
     ],
     imports: [
       BrowserModule,
@@ -54,11 +59,13 @@ import {ProductPageComponent} from "./pages/product-page/product-page.component"
         positionClass: 'toast-top-right'
       }),
       NgbCarouselModule,
+      NgxPaginationModule
     ],
     bootstrap: [AppComponent],
-    exports: [
-      NavbarComponent,
-    ],
+  exports: [
+    NavbarComponent,
+    ProductCardComponent,
+  ],
     providers: [
       provideClientHydration(),
     ]

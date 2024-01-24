@@ -89,3 +89,9 @@
 .search-icon {
   transform: translateX(-35px);
 }
+
+.account-dropdown .dropdown-menu{
+  width: 400px;
+  padding: 15px 30px;
+}
+

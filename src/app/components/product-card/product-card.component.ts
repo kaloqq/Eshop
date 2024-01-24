@@ -78,8 +78,8 @@ export class ProductCardComponent implements OnInit{
     this.isButtonHovered = !this.isButtonHovered;
   }
 
-  navigateProduct(id){
-    this.router.navigate(['product',id])
+  navigateProduct(id,name){
+    this.router.navigate(['p',name,id])
   }
 
   calculateProgress(value, element){

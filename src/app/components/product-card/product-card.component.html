@@ -20,8 +20,8 @@
   </div>
 
   <!--    IMAGES CONTAINER    -->
-  <div class="position-relative img-container d-flex align-items-center">
-    <a (click)="navigateProduct(receivedData['id'])" class="pointer">
+  <div class="position-relative img-container d-flex">
+    <a (click)="navigateProduct(receivedData['id'], receivedData['name_bg'])" class="pointer">
       <img [src]="receivedData['picture']" class="img-fluid rounded-top-3" alt="Mattress image">
     </a>
     <img src="assets/images/badges/badge-new.png" class="position-absolute bottom-0 start-0 size-48px" alt="Badge">
@@ -40,7 +40,7 @@
 
     <div class="d-flex flex-column px-2">
       <div class="pr-title-container">
-        <a (click)="navigateProduct(receivedData['id'])" class="pointer"><h3 class="pr-title">{{receivedData['name_bg']}}</h3></a>
+        <a (click)="navigateProduct(receivedData['id'], receivedData['name_bg'])" class="pointer"><h3 class="pr-title">{{receivedData['name_bg']}}</h3></a>
       </div>
       <p class="price">{{this.minPrice}} лв. - {{this.maxPrice}} лв.</p>
     </div>
@@ -166,7 +166,7 @@
   </div>
 
   <div class="w-100">
-    <a class="btn btn-pr-open mt-2 text-uppercase" [ngClass]="{'btn-pr-open-hovered': isButtonHovered}" (click)="navigateProduct(receivedData['id'])" #btnElement>разгледай</a>
+    <a class="btn btn-pr-open mt-2 text-uppercase" [ngClass]="{'btn-pr-open-hovered': isButtonHovered}" (click)="navigateProduct(receivedData['id'], receivedData['name_bg'])" #btnElement>разгледай</a>
   </div>
 
 </div>

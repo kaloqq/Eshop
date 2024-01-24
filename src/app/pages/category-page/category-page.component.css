@@ -1,0 +1,12 @@
+.cat-icon {
+  width: 114px;
+  height: 114px;
+}
+
+.cat-icon-c {
+  width: 144px;
+  height: 144px;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: #f4f4f4;
+}

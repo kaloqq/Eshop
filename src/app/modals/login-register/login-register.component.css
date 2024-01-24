@@ -1,0 +1,67 @@
+.login-tab.active {
+  background-color: transparent;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgb(0, 0, 0);
+  transition: border 0.15s ease 0s;
+  color: rgb(0, 0, 0);
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size:12px;
+  font-weight: 600;
+}
+
+.login-tab {
+  background-color: transparent;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgb(204, 204, 204);
+  transition: border 0.15s ease 0s;
+  color: rgb(204, 204, 204);
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size:12px;
+  font-weight: 600;
+  width: 148px;
+}
+
+.facebook-btn {
+  background-color: rgb(24, 120, 242);
+  border: 1px solid rgb(24, 120, 242);
+  cursor: pointer;
+  border-radius: 2px;
+  color: white;
+  font-weight: 700;
+}
+
+.facebook-icon {
+  left: 40px;
+}
+
+.or-email {
+  padding: 1rem;
+}
+
+.or-email span {
+  background-color: var(--white-color);
+  padding: 0px 1rem;
+  color: rgb(204, 204, 204);
+  font-weight: 700;
+  line-height: 24px;
+  z-index: 1;
+}
+
+.or-email::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  inset: 0px -1rem;
+  background-color: rgb(229, 229, 229);
+  margin: auto;
+}

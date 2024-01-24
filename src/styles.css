@@ -239,9 +239,20 @@ h2{
 .btn-beige:hover .btn-icon {
   filter:invert(96%) sepia(0%) saturate(7500%) hue-rotate(132deg) brightness(94%) contrast(123%);
   transition: all .3s;
-
 }
 
+.btn-primary-dark {
+  background-color: var(--primary-hover);
+  color: var(--white-color);
+  transition: all .3s;
+  border-radius: 3px;
+}
+
+.btn-primary-dark:hover {
+  background-color: var(--product-card-button-hover);
+  color: white;
+  transition: all .3s;
+}
 
 /* END: BUTTON STYLES */
 

@@ -32,7 +32,19 @@
       <div class="d-flex gap-3 fw-bold">
         <a routerLink="/" ><fa-icon [icon]="icons['faRightLeft']"></fa-icon></a>
         <a routerLink="/" ><fa-icon [icon]="icons['faHeart']"></fa-icon></a>
-        <a routerLink="/" ><fa-icon [icon]="icons['faUser']"></fa-icon></a>
+        <a routerLink="/" ><fa-icon [icon]="icons['faCart']" (click)="router.navigate(['cart'])"></fa-icon></a>
+
+
+<!--LOGIN DROPDOWN-->
+        <div ngbDropdown placement="bottom-end" class="d-flex align-items-center text-sale fw-bold h-100 account-dropdown" #account (mouseenter)="saleHover('account')" (mouseleave)="saleHover('account')">
+          <span class="fw-bolder pointer" ngbDropdownToggle >
+            <a routerLink="/" ><fa-icon [icon]="icons['faUser']" class="py-1" (click)="openLoginModal()"></fa-icon></a>
+          </span>
+          <div ngbDropdownMenu aria-labelledby="mattresses">
+            <h5 class="fw-700 text-center">Все още не сте влязъл в профила си</h5>
+            <a class="btn btn-secondary-dark d-block rounded-1 mt-4" (click)="openLoginModal()">Вход</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -43,7 +55,7 @@
   <div class=" border-bottom border-light-subtle">
     <div class="container d-flex align-items-center justify-content-between h-65px">
   <!--PRODUCTS ON SALE-->
-        <div ngbDropdown class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
+        <div ngbDropdown autoClose="outside" class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
           <span class="fw-bolder pointer" ngbDropdownToggle >
           <img src="assets/images/icons/sale.svg" class="btn-icon m-0">
             Промоции
@@ -76,26 +88,29 @@
   <!--MAIN MENU-->
 
         <div class="d-flex align-items-center">
-          <div ngbDropdown class="d-flex align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
+          <div ngbDropdown autoClose="outside" placement="bottom-end" class="d-flex py-1 align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
           <span class="fw-bolder pointer" ngbDropdownToggle >
             Категории
           </span>
             <div ngbDropdownMenu aria-labelledby="categories">
-              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+              <a [routerLink]="['/c/mattresses',1,0,1,0]" class="secondary-hover" ngbDropdownItem>
                 <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
-                Матраци в промоция</a>
-              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                Матраци</a>
+              <a [routerLink]="['/c/top-mattresses',2,0,1,0]" class="secondary-hover" ngbDropdownItem>
                 <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
-                Топ матраци в промоция</a>
-              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                Топ матраци</a>
+              <a [routerLink]="['/c/pillows',3,0,1,0]" class="secondary-hover" ngbDropdownItem>
                 <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
-                Възглавници в промоция</a>
-              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                Възглавници</a>
+              <a [routerLink]="['/c/bed-linen',4,0,1,0]" class="secondary-hover" ngbDropdownItem>
                 <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
-                Спално бельо в промоция</a>
-              <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+                Спално бельо</a>
+              <a [routerLink]="['/c/children',5,0,1,0]" class="secondary-hover" ngbDropdownItem>
+                <img src="assets/images/icons/children.svg" class="size-48px m-0">
+                Детски продукти</a>
+              <a  [routerLink]="['/c/accessories',6,0,1,0]" class="secondary-hover" ngbDropdownItem>
                 <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
-                Аксесоари в промоция</a>
+                Аксесоари</a>
             </div>
           </div>
         </div>
@@ -103,3 +118,9 @@
     </div>
   </div>
 </nav>
+
+<ng-template #login>
+
+  <app-login-register></app-login-register>
+
+</ng-template>

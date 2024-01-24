@@ -1,9 +1,17 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgbCarousel} from "@ng-bootstrap/ng-bootstrap";
+import {ChangeDetectorRef, Component, inject, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {NgbCarousel, NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {faHeart, faStar} from "@fortawesome/free-regular-svg-icons";
-import {faArrowDownLong, faChevronDown, faChevronUp, faCompress, faStar as faStarSolid} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownLong,
+  faChevronDown,
+  faChevronUp,
+  faCircleCheck,
+  faCompress,
+  faStar as faStarSolid, faTimes
+} from "@fortawesome/free-solid-svg-icons";
 import {DataService} from "../../data.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -13,6 +21,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProductPageComponent implements OnInit{
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
+  @ViewChild('addedToCart', { static: true }) addedToCart: NgbCarousel;
   public productID = this.route.snapshot.paramMap.get('id');
   public productData:any = [];
   public activeID:string = 'one';
@@ -26,6 +35,8 @@ export class ProductPageComponent implements OnInit{
   public isExpanded:boolean = false;
   public selectedFeatureA;
   public newPrices:{} = {};
+  private offcanvasService = inject(NgbOffcanvas);
+  public fullCart;
   // TODO: STAR RATING FROM REQUEST
   public starRating:number = 4.7;
   icons = {
@@ -35,12 +46,16 @@ export class ProductPageComponent implements OnInit{
     'faChevronUp': faChevronUp,
     'faChevronDown': faChevronDown,
     'faStar': faStar,
-    'faStarSolid': faStarSolid
+    'faStarSolid': faStarSolid,
+    'faCircleCheck': faCircleCheck,
+    'faTimes': faTimes
   };
 
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetection: ChangeDetectorRef,
+    private toastr: ToastrService
   ) {
   }
 
@@ -57,10 +72,10 @@ export class ProductPageComponent implements OnInit{
     data['id'] = this.productID;
     this.dataService.Get(data).subscribe((res) => {
       this.productData= res['data'];
-      console.log(this.productData);
       this.progressValueHardness = this.productData.info['bar1'];
       this.progressValueClass = this.productData.info['bar2'];
       this.selectedFeatureA = this.productData.features.featureA.options[0].id;
+      this.changeDetection.detectChanges();
       this.changePrice();
     })
   }
@@ -105,6 +120,43 @@ export class ProductPageComponent implements OnInit{
           this.newPrices['regular'] = el['price_bg'];
       }
     })
+  }
+
+  addToCart(){
+    let itemObject = {
+      id: this.productData.info.id,
+      name: this.productData.info.name_bg,
+      qty: this.quantity,
+      price: this.newPrices['promo'] ? this.newPrices['promo'] : this.newPrices['regular'],
+      picture: this.productData.info.picture,
+    }
+    if(!localStorage.getItem('cart')){
+      localStorage.setItem('cart', JSON.stringify(Array(itemObject)));
+    } else {
+      let local = localStorage.getItem('cart');
+      let cart = JSON.parse(local);
+      cart.forEach((el, i) => {
+        if(el.id === itemObject.id){
+          el.qty = el.qty + itemObject.qty;
+        } else if (el.id != itemObject.id && i === cart.length - 1){
+          cart.push(itemObject);
+        }
+      })
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    this.open();
+  }
+
+  open() {
+    this.fullCart = JSON.parse(localStorage.getItem('cart'));
+    this.offcanvasService.open(this.addedToCart, { position: 'end' });
+  }
+
+  removeItemFromCart(index){
+    this.fullCart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(this.fullCart));
+    this.toastr.info('Успешно премахнат от количката!');
+    this.changeDetection.detectChanges();
   }
 
   protected readonly Array = Array;
