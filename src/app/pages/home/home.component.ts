@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
 
   constructor(
     private dataService: DataService,
-    private detectChanges: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) {
   }
 
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit{
     data['action'] = 'home_products'
     this.dataService.Get(data).subscribe((res:[]) => {
       this.products = res['data'];
-      this.detectChanges.detectChanges();
+      this.cdr.detectChanges();
     })
   }
 

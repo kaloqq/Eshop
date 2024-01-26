@@ -36,7 +36,6 @@ export class ProductCardComponent implements OnInit{
   icons = {
     'faHeart': faHeart,
     'faArrowDown': faArrowDownLong,
-    'faCompress': faCompress,
     'faStar': faStar,
     'faStarSolid': faStarSolid,
   };

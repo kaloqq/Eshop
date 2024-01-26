@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, inject, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {faHeart, faStar} from "@fortawesome/free-regular-svg-icons";
 import {
@@ -22,6 +22,7 @@ import {ToastrService} from "ngx-toastr";
 export class ProductPageComponent implements OnInit{
   @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
   @ViewChild('addedToCart', { static: true }) addedToCart: NgbCarousel;
+  @ViewChild('cart', { static: true }) cart: ElementRef;
   public productID = this.route.snapshot.paramMap.get('id');
   public productData:any = [];
   public activeID:string = 'one';
@@ -35,14 +36,12 @@ export class ProductPageComponent implements OnInit{
   public isExpanded:boolean = false;
   public selectedFeatureA;
   public newPrices:{} = {};
-  private offcanvasService = inject(NgbOffcanvas);
-  public fullCart;
+  public isDataLoaded:boolean = false;
   // TODO: STAR RATING FROM REQUEST
   public starRating:number = 4.7;
   icons = {
     'faHeart': faHeart,
     'faArrowDown': faArrowDownLong,
-    'faCompress': faCompress,
     'faChevronUp': faChevronUp,
     'faChevronDown': faChevronDown,
     'faStar': faStar,
@@ -54,15 +53,13 @@ export class ProductPageComponent implements OnInit{
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private changeDetection: ChangeDetectorRef,
-    private toastr: ToastrService
+    private cdr: ChangeDetectorRef,
+    private offCanvasService: NgbOffcanvas
   ) {
   }
 
   ngOnInit() {
     this.getProductData();
-    this.calculateProgress(this.progressValueHardness, 'hardness');
-    this.calculateProgress(this.progressValueClass,'class');
   }
 
   getProductData(){
@@ -75,8 +72,11 @@ export class ProductPageComponent implements OnInit{
       this.progressValueHardness = this.productData.info['bar1'];
       this.progressValueClass = this.productData.info['bar2'];
       this.selectedFeatureA = this.productData.features.featureA.options[0].id;
-      this.changeDetection.detectChanges();
       this.changePrice();
+      this.calculateProgress(this.progressValueHardness, 'hardness');
+      this.calculateProgress(this.progressValueClass,'class');
+      this.isDataLoaded = true;
+      this.cdr.detectChanges();
     })
   }
 
@@ -122,41 +122,29 @@ export class ProductPageComponent implements OnInit{
     })
   }
 
-  addToCart(){
-    let itemObject = {
+  addToCart() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const itemObject = {
       id: this.productData.info.id,
       name: this.productData.info.name_bg,
       qty: this.quantity,
-      price: this.newPrices['promo'] ? this.newPrices['promo'] : this.newPrices['regular'],
+      regularPrice: this.newPrices['regular'],
+      promoPrice: this.newPrices['promo'],
       picture: this.productData.info.picture,
-    }
-    if(!localStorage.getItem('cart')){
-      localStorage.setItem('cart', JSON.stringify(Array(itemObject)));
+    };
+    const existingItem = cart.find(el => el.id === itemObject.id);
+    if (existingItem) {
+      existingItem.qty += itemObject.qty;
     } else {
-      let local = localStorage.getItem('cart');
-      let cart = JSON.parse(local);
-      cart.forEach((el, i) => {
-        if(el.id === itemObject.id){
-          el.qty = el.qty + itemObject.qty;
-        } else if (el.id != itemObject.id && i === cart.length - 1){
-          cart.push(itemObject);
-        }
-      })
-      localStorage.setItem('cart', JSON.stringify(cart));
+      cart.push(itemObject);
     }
+    localStorage.setItem('cart', JSON.stringify(cart));
     this.open();
   }
 
-  open() {
-    this.fullCart = JSON.parse(localStorage.getItem('cart'));
-    this.offcanvasService.open(this.addedToCart, { position: 'end' });
-  }
 
-  removeItemFromCart(index){
-    this.fullCart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(this.fullCart));
-    this.toastr.info('Успешно премахнат от количката!');
-    this.changeDetection.detectChanges();
+  open() {
+    this.offCanvasService.open(this.cart, {position: 'end'});
   }
 
   protected readonly Array = Array;

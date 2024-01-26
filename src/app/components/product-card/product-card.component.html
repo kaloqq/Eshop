@@ -1,16 +1,10 @@
 <div class="product position-relative my-3" [id]="receivedData['id']" (mouseenter)="productHovered()" (mouseleave)="productHovered()">
 
   <div class="d-flex position-absolute w-100 z-1 text-uppercase">
-    <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
+    <div class="col-sm-12 col-md-12" *ngIf="isButtonHovered" [@fadeInOut]>
       <a class="btn btn-pr-transparent w-100 text-center rounded-t-l">
         <fa-icon [icon]="icons['faHeart']"></fa-icon>
         любим
-      </a>
-    </div>
-    <div class="col-sm-6 col-md-6" *ngIf="isButtonHovered" [@fadeInOut]>
-      <a class="btn btn-pr-transparent w-100 text-center rounded-t-r">
-        <fa-icon [icon]="icons['faCompress']"></fa-icon>
-        сравни
       </a>
     </div>
     <img src="../../../assets/images/icons/EkoTex-warranty.svg" class="position-absolute guarantee" alt="Mattress guarantee">

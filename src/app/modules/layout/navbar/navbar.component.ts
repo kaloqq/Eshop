@@ -1,16 +1,12 @@
 import {
-  AfterRenderRef,
-  ChangeDetectorRef,
   Component,
   ElementRef,
-  Inject,
   OnInit,
-  PLATFORM_ID,
   ViewChild
 } from '@angular/core';
 import {faBars, faCartShopping, faMagnifyingGlass, faRightLeft} from "@fortawesome/free-solid-svg-icons";
 import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
-import {NgbCarousel, NgbDropdown, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbCarousel, NgbDropdown, NgbModal, NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 
 @Component({
@@ -23,10 +19,11 @@ export class NavbarComponent implements OnInit{
   @ViewChild('categories', { static: true, read: NgbDropdown }) categories: NgbDropdown;
   @ViewChild('account', { static: true, read: NgbDropdown }) account: NgbDropdown;
   @ViewChild('login', { static: true }) login: ElementRef;
+  @ViewChild('cart', { static: true }) cart: ElementRef;
+  public searchValue:string = '';
 
   icons = {
     'faMagnifyingGlass': faMagnifyingGlass,
-    'faRightLeft': faRightLeft,
     'faHeart': faHeart,
     'faUser': faUser,
     'faCart': faCartShopping
@@ -34,7 +31,8 @@ export class NavbarComponent implements OnInit{
 
   constructor(
     private modalService: NgbModal,
-    public router: Router
+    private offCanvasService: NgbOffcanvas,
+    private router: Router
   ) {
   }
 
@@ -55,6 +53,15 @@ export class NavbarComponent implements OnInit{
   openLoginModal(){
     this.modalService.open(this.login, { centered: true, size: 'md'});
     this.account.close();
+  }
+
+  openCart(){
+    this.offCanvasService.open(this.cart, {position: 'end',});
+  }
+
+  searchProduct(){
+    this.router.navigate(['c','search',0,0,1,this.searchValue]);
+
   }
 
 

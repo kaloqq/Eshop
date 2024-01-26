@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DataService} from "../../data.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PagingConfig} from "../../models/paging-config.model";
 
 
@@ -10,10 +10,11 @@ import {PagingConfig} from "../../models/paging-config.model";
   styleUrl: './category-page.component.css'
 })
 export class CategoryPageComponent implements OnInit{
-  public categoryID:string = this.route.snapshot.paramMap.get('id');
+  public categoryID:string = this.route.snapshot.paramMap.get('category');
   public trademark:string = this.route.snapshot.paramMap.get('trademark');
   public currentPage:number  = Number(this.route.snapshot.paramMap.get('page'));
   public categoryName:string = this.route.snapshot.paramMap.get('name');
+  public search:string = this.route.snapshot.paramMap.get('search');
   public itemsPerPage: number = 20;
   public totalItems: number = 0;
   public pagingConfig: PagingConfig = {} as PagingConfig;
@@ -53,21 +54,21 @@ export class CategoryPageComponent implements OnInit{
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private detectChanges: ChangeDetectorRef
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.pagingConfig = {
       itemsPerPage: this.itemsPerPage,
       currentPage: this.currentPage,
       totalItems: this.totalItems
     }
-    route.params.subscribe(val => {
-      this.getProducts();
-    });
   }
 
-
-
   ngOnInit() {
+    console.log(this.search)
+    this.route.paramMap.subscribe(params => {
+      this.getProducts();
+    });
   }
 
   getProducts(){
@@ -78,13 +79,18 @@ export class CategoryPageComponent implements OnInit{
     data['category'] = this.categoryID;
     data['page'] = this.currentPage;
     data['trademark'] = this.trademark;
+    data['search'] = this.search;
+    data['sizing'] = '';
     this.dataService.Get(data).subscribe((res) => {
       this.products = res['data'];
-      this.pagingConfig.totalItems = res['data'].length;
+      this.cdr.detectChanges();
+      this.pagingConfig.totalItems = this.products.total;
     })
   }
 
   onTableDataChange(event:any){
+    this.currentPage = event;
+    this.router.navigate(['c', this.categoryName,this.categoryID,this.trademark,event,this.search]);
     this.pagingConfig.currentPage  = event;
   }
 

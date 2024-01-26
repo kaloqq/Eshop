@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="container d-flex gap-5">
+<div class="container d-flex gap-5" *ngIf="isDataLoaded">
 
   <div class="col-sm-12 col-md-6">
 
@@ -189,16 +189,10 @@
     </div>
 
     <div class="d-flex my-3">
-      <div class="col-sm-6 col-md-6 text-center" >
+      <div class="col-sm-12 col-md-12 text-center" >
         <a class="btn favorite">
           <fa-icon [icon]="icons['faHeart']"></fa-icon>
           направи любим
-        </a>
-      </div>
-      <div class="col-sm-6 col-md-6">
-        <a class="btn compare">
-          <fa-icon [icon]="icons['faCompress']"></fa-icon>
-          сравни
         </a>
       </div>
     </div>
@@ -284,40 +278,6 @@
   </div>
 </div>
 
-<ng-template #addedToCart let-offcanvas>
-  <div class="offcanvas-header border border-light-subtle">
-    <h6 class="offcanvas-title" id="offcanvas-basic-title">
-      <fa-icon [icon]="icons['faCircleCheck']" class="text-light-green me-2"></fa-icon>
-      Успешно добавено в количката!
-    </h6>
-    <button type="button" class="btn-close pointer" aria-label="Close" (click)="offcanvas.dismiss()"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="d-flex flex-column">
-
-      <div class="d-flex align-items-center justify-content-between border-bottom py-3 border-dark-subtle" *ngFor="let pr of fullCart, let i = index">
-        <div class="d-flex gap-4">
-          <img [src]="pr.picture" class="size-95px">
-          <div class="d-flex flex-column">
-            <h5 class="mb-0">{{pr.name}}</h5>
-            <span>{{pr.qty}} х {{pr.price}} лв.</span>
-            <p class="mb-0 fw-700">Total: {{pr.qty * pr.price}} лв.</p>
-          </div>
-        </div>
-        <fa-icon [icon]="icons['faTimes']" class="text-danger pointer" (click)="removeItemFromCart(i)"></fa-icon>
-      </div>
-
-    </div>
-
-    <div class="container-fluid mt-4">
-      <div class="row align-items-center">
-        <div class="col-sm-12 col-md-6">
-          <button class="btn btn-primary-dark" routerLink="/">Към количката</button>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <button class="btn btn-secondary-dark" routerLink="/">Приключване на поръчката</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<ng-template #cart>
+  <app-cart-modal [componentDesign]="'standard'"></app-cart-modal>
 </ng-template>

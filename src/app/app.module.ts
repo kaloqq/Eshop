@@ -28,6 +28,8 @@ import {ProductPageComponent} from "./pages/product-page/product-page.component"
 import {LoginRegisterComponent} from "./modals/login-register/login-register.component";
 import {CategoryPageComponent} from "./pages/category-page/category-page.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {CartModalComponent} from "./modals/cart-modal/cart-modal.component";
+import {AuthModule} from "./modules/auth/auth.module";
 
 
 
@@ -43,6 +45,7 @@ import {NgxPaginationModule} from "ngx-pagination";
       ProductPageComponent,
       LoginRegisterComponent,
       CategoryPageComponent,
+      CartModalComponent
     ],
     imports: [
       BrowserModule,
@@ -59,7 +62,8 @@ import {NgxPaginationModule} from "ngx-pagination";
         positionClass: 'toast-top-right'
       }),
       NgbCarouselModule,
-      NgxPaginationModule
+      NgxPaginationModule,
+      AuthModule
     ],
     bootstrap: [AppComponent],
   exports: [
