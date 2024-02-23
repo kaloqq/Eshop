@@ -4,6 +4,7 @@ import {AboutUsComponent} from "./about-us/about-us.component";
 import {ContactsComponent} from "./contacts/contacts.component";
 import {ProductPageComponent} from "./product-page/product-page.component";
 import {CategoryPageComponent} from "./category-page/category-page.component";
+import {CheckoutComponent} from "./checkout/checkout.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,12 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent
-  },{
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent
+  },
+  {
     path: 'p/:name/:id',
     component: ProductPageComponent
   },

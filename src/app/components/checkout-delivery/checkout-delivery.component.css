@@ -1,0 +1,19 @@
+.btn-checkout-check-main{
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+  border-radius: 3px !important;
+}
+
+.btn-checkout-check-main:checked + .btn-checkout-inactive-main{
+  background-color: var(--primary-hover);
+  color: var(--white-color);
+  transition: all .3s;
+  border-radius: 3px !important;
+  border-color: var(--primary-hover);
+}
+
+.btn-checkout-inactive-main {
+  border: 1px solid var(--sub-gray);
+  border-radius: 3px !important;
+}

@@ -1,0 +1,87 @@
+<div class="my-5">
+  <h3>Основна информация</h3>
+
+  <div class="mt-5 d-flex justify-content-center gap-3 input-group">
+    <input type="radio" class="btn-checkout-check-main" name="options-delivery" value="office" [(ngModel)]="deliverData['dlv_type']" id="toOffice">
+    <label class="btn btn-checkout-inactive-main" for="toOffice">Доставка до офис</label>
+
+    <input type="radio" class="btn-checkout-check-main" name="options-delivery" value="address" [(ngModel)]="deliverData['dlv_type']" id="toAddress">
+    <label class="btn btn-checkout-inactive-main" for="toAddress">Доставка до адрес</label>
+  </div>
+
+
+  <ng-container *ngIf="deliverData['dlv_type'] === 'office'">
+    <div class="mt-2 d-flex justify-content-center gap-3 input-group">
+      <input type="radio" class="btn-checkout-check-main" name="options-office" value="office_speedy" [(ngModel)]="deliverData['office_type']" id="officeSpeedy">
+      <label class="btn btn-checkout-inactive-main" for="officeSpeedy">Офис на Спиди</label>
+
+      <input type="radio" class="btn-checkout-check-main" name="options-office" value="office_econt" [(ngModel)]="deliverData['office_type']" id="officeEcont">
+      <label class="btn btn-checkout-inactive-main" for="officeEcont">Офис на Еконт</label>
+    </div>
+
+    <div class="row" *ngIf="deliverData['office_type'] === 'office_speedy'">
+      <div class="col-sm-12 col-md-12">
+        <label class="form-label">Адрес на Спиди офис</label>
+        <ng-select></ng-select>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="deliverData['office_type'] === 'office_econt'">
+      <div class="col-sm-12 col-md-12">
+        <label class="form-label">Адрес на Еконт офис</label>
+        <ng-select></ng-select>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="deliverData['dlv_type'] === 'address'">
+    <div class="mt-2 d-flex justify-content-center gap-3 input-group">
+      <input type="radio" class="btn-checkout-check-main" name="options-address" value="address_speedy" [(ngModel)]="deliverData['address_type']" id="addressSpeedy">
+      <label class="btn btn-checkout-inactive-main" for="addressSpeedy">Спиди до адрес</label>
+
+      <input type="radio" class="btn-checkout-check-main" name="options-address" value="address_econt" [(ngModel)]="deliverData['address_type']" id="addressEcont">
+      <label class="btn btn-checkout-inactive-main" for="addressEcont">Еконт до адрес</label>
+    </div>
+
+    <div class="row gy-4">
+      <div class="col-sm-12 col-md-12">
+        <label class="form-label">Населено място</label>
+        <ng-select></ng-select>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <label class="form-label">Квартал</label>
+        <ng-select></ng-select>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <label class="form-label">Улица</label>
+        <ng-select></ng-select>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <label class="form-label">Номер на улица</label>
+        <input class="form-control">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <label class="form-label">Сграда</label>
+        <input class="form-control">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <label class="form-label">Вход</label>
+        <input class="form-control">
+      </div>
+    </div>
+
+  </ng-container>
+
+
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <button class="btn btn-secondary" (click)="goToStep('previous')">
+      <fa-icon [icon]="icons['faAnglesLeft']"></fa-icon>
+      Назад
+    </button>
+    <button class="btn btn-primary-dark" (click)="goToStep('next')">Продължи
+      <fa-icon [icon]="icons['faAnglesRight']"></fa-icon>
+    </button>
+  </div>
+
+</div>

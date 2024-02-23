@@ -21,7 +21,7 @@ import {DataService} from "../../data.service";
 })
 export class HomeComponent implements OnInit{
   public products:any[] = [];
-  public isCatHovered:boolean = false;
+  public isCatHovered:string = '';
 
   constructor(
     private dataService: DataService,
@@ -44,8 +44,9 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  catHovered(){
-    this.isCatHovered = !this.isCatHovered;
+  catHovered(value){
+    console.log(value);
+    this.isCatHovered = value;
   }
 
 }

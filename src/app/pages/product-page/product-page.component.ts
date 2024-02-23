@@ -20,8 +20,8 @@ import {ToastrService} from "ngx-toastr";
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent implements OnInit{
-  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
-  @ViewChild('addedToCart', { static: true }) addedToCart: NgbCarousel;
+  @ViewChild(NgbCarousel) carousel: NgbCarousel;
+  @ViewChild('addedToCart', { static: true }) addedToCart: NgbOffcanvas;
   @ViewChild('cart', { static: true }) cart: ElementRef;
   public productID = this.route.snapshot.paramMap.get('id');
   public productData:any = [];
@@ -144,7 +144,7 @@ export class ProductPageComponent implements OnInit{
 
 
   open() {
-    this.offCanvasService.open(this.cart, {position: 'end'});
+    this.offCanvasService.open(this.cart, { panelClass: 'cart-offcanvas', position: 'end'});
   }
 
   protected readonly Array = Array;

@@ -38,6 +38,9 @@ export class CartModalComponent implements OnInit{
   }
 
   calculatePrices(){
+    this.totalRegularPrice = 0;
+    this.totalPrice = 0;
+    this.totalDiscount = 0;
     this.fullCart.forEach((el) => {
       this.totalRegularPrice += el.qty * Number(el.regularPrice);
       if(el.promoPrice){
@@ -51,6 +54,19 @@ export class CartModalComponent implements OnInit{
     this.fullCart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(this.fullCart));
     this.toastr.info('Успешно премахнат от количката!');
+    this.calculatePrices();
+    this.cdr.detectChanges();
+  }
+
+  changeQty(action, pr){
+    if(action === 'increment'){
+      pr.qty++;
+    } else if (action === 'decrement' && pr.qty > 1){
+      pr.qty--;
+    } else if (action === 'decrement' && pr.qty === 1){
+    }
+    this.calculatePrices();
+    localStorage.setItem('cart', JSON.stringify(this.fullCart));
     this.cdr.detectChanges();
   }
 

@@ -3,6 +3,7 @@
 @import "ngx-toastr/toastr";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1;0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,1;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+@import "@ng-select/ng-select/themes/default.theme.css";
 
 :root {
   --dynamic-text-color: #78B833;
@@ -254,6 +255,11 @@ h2{
   transition: all .3s;
 }
 
+.btn-close:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* END: BUTTON STYLES */
 
 /* START: PRODUCT CARD STYLES */
@@ -455,11 +461,45 @@ h2{
   margin-right: 10px;
 }
 
+.size-80px {
+  width: 80px;
+  height: 80px;
+}
+
 .bg-dark-blue {
   background-color: var(--product-card-button-hover);
 }
 
 .w-fit {
   width: fit-content;
+}
+.qty {
+  width: 2em;
+  height: 35px;
+  border: none;
+}
+
+.qty:focus {
+  outline: none;
+}
+
+.qty::-webkit-outer-spin-button,
+.qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.increment, .decrement {
+  border: none;
+  background-color: var(--white-color);
+  margin: 0 10px;
+  padding: 0 8px;
+  border-radius: 5px
+}
+
+.increment:hover, .decrement:hover {
+  background-color: #f4f4f4;
+  width: fit-content;
+  height: fit-content;
 }
 /* END: COMMON STYLES */

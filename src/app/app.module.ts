@@ -30,6 +30,10 @@ import {CategoryPageComponent} from "./pages/category-page/category-page.compone
 import {NgxPaginationModule} from "ngx-pagination";
 import {CartModalComponent} from "./modals/cart-modal/cart-modal.component";
 import {AuthModule} from "./modules/auth/auth.module";
+import {CheckoutComponent} from "./pages/checkout/checkout.component";
+import {CheckoutInformationComponent} from "./components/checkout-information/checkout-information.component";
+import {CheckoutDeliveryComponent} from "./components/checkout-delivery/checkout-delivery.component";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 
@@ -45,7 +49,10 @@ import {AuthModule} from "./modules/auth/auth.module";
       ProductPageComponent,
       LoginRegisterComponent,
       CategoryPageComponent,
-      CartModalComponent
+      CartModalComponent,
+      CheckoutComponent,
+      CheckoutInformationComponent,
+      CheckoutDeliveryComponent
     ],
     imports: [
       BrowserModule,
@@ -63,7 +70,8 @@ import {AuthModule} from "./modules/auth/auth.module";
       }),
       NgbCarouselModule,
       NgxPaginationModule,
-      AuthModule
+      AuthModule,
+      NgSelectModule
     ],
     bootstrap: [AppComponent],
   exports: [

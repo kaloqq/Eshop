@@ -8,6 +8,7 @@ import {faBars, faCartShopping, faMagnifyingGlass, faRightLeft} from "@fortaweso
 import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
 import {NgbCarousel, NgbDropdown, NgbModal, NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
+import {DataService} from "../../../data.service";
 
 @Component({
   selector: 'app-navbar',
@@ -32,7 +33,8 @@ export class NavbarComponent implements OnInit{
   constructor(
     private modalService: NgbModal,
     private offCanvasService: NgbOffcanvas,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
   ) {
   }
 
@@ -56,12 +58,20 @@ export class NavbarComponent implements OnInit{
   }
 
   openCart(){
-    this.offCanvasService.open(this.cart, {position: 'end',});
+    this.offCanvasService.open(this.cart, {panelClass: 'cart-offcanvas', position: 'end',});
   }
 
-  searchProduct(){
-    this.router.navigate(['c','search',0,0,1,this.searchValue]);
-
+  searchProduct(term){
+    if(term.length >= 2){
+      var data = [];
+      data['controller'] = 'base';
+      data['action'] = 'search';
+      data['language'] = 'bg';
+      data['term'] = term;
+      this.dataService.Get(data).subscribe((res) => {
+        console.log(res);
+      })
+    }
   }
 
 

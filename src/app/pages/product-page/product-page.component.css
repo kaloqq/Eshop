@@ -63,31 +63,6 @@
   background-color:var(--add-to-cart-hover) ;
 }
 
-.qty {
-  width: 2em;
-  height: 35px;
-  border: none;
-}
-
-.qty::-webkit-outer-spin-button,
-.qty::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.increment, .decrement {
-  border: none;
-  background-color: var(--white-color);
-  margin: 0 10px;
-  padding: 0 8px;
-  border-radius: 5px
-}
-
-.increment:hover, .decrement:hover {
-  background-color: #f4f4f4;
-  width: fit-content;
-  height: fit-content;
-}
 
 .compare, .favorite {
   text-transform: uppercase;

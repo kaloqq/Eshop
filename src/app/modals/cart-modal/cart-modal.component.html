@@ -1,47 +1,69 @@
-  <div class="offcanvas-header border border-light-subtle">
-    <h6 class="offcanvas-title" *ngIf="componentDesign === 'standard'">
-      <fa-icon [icon]="icons['faCircleCheck']" class="text-light-green me-2"></fa-icon>
-      Успешно добавено в количката!
-    </h6>
-    <button type="button" class="btn-close pointer" aria-label="Close" (click)="close()"></button>
+<div class="offcanvas-header border-bottom">
+  <div class="d-flex align-items-center w-100">
+    <button type="button" class="btn-close" (click)="close()"></button>
+    <h6 class="offcanvas-title w-100 text-center">Количка ({{fullCart.length}})</h6>
   </div>
-  <div class="offcanvas-body">
-    <div class="d-flex flex-column" *ngIf="fullCart.length !== 0">
+</div>
+<div class="offcanvas-body p-4">
 
-      <div class="d-flex align-items-center justify-content-between border-bottom py-3 border-dark-subtle" *ngFor="let pr of fullCart, let i = index">
-        <div class="d-flex gap-4">
-          <img [src]="pr.picture" class="size-95px">
-          <div class="d-flex flex-column justify-content-between">
-            <h5 class="mb-0">{{pr.name}}</h5>
-            <span class="fs-6">{{pr.qty}} х <span [ngClass]="{'text-decoration-line-through': pr.promoPrice}">{{pr.regularPrice}} лв.</span>
+  <div class="d-flex flex-column gap-3" *ngIf="fullCart.length !== 0">
+    <div class="d-flex justify-content-between" *ngFor="let pr of fullCart, let i = index">
+
+      <div class="d-flex gap-4" >
+        <img [src]="pr.picture" class="size-80px">
+        <div class="d-flex flex-column">
+          <h6>{{pr.name}}</h6>
+          <span>
+            <span class="text-secondary" [ngClass]="{'text-decoration-line-through': pr.promoPrice}">{{pr.regularPrice}} лв.</span>
             <span *ngIf="pr.promoPrice" class="text-light-green fw-600 ms-2">{{pr.promoPrice}} лв.</span>
-            </span>
-            <p class="mb-0 fw-700">Общо: {{pr.qty * (pr.promoPrice ? pr.promoPrice : pr.regularPrice)}} лв.</p>
-          </div>
+          </span>
         </div>
-        <fa-icon [icon]="icons['faTimes']" class="text-danger pointer" (click)="removeItemFromCart(i)"></fa-icon>
+      </div>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+
+        <div class="d-flex align-items-center border border-1 h-40px">
+          <button class="decrement" (click)="changeQty('decrement', pr)">-</button>
+          <input type="number" class="qty text-center" [(ngModel)]="pr.qty">
+          <button class="increment" (click)="changeQty('increment', pr)">+</button>
+        </div>
+        <a class="text-secondary fs-14px pointer" (click)="removeItemFromCart(i)">Remove</a>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+
+      <div class="d-flex gap-4" >
+        <img src="assets/images/products/Diamond_memory_ekotex.webp" class="size-80px">
+        <div class="d-flex flex-column">
+          <h6 class="fs-12px text-secondary mb-0">Вашата поръчка се съчетава отлично с</h6>
+          <h6>Diamond Memory</h6>
+          <span>
+            <span class="text-secondary">423 лв.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <a class="btn btn-outline-primary">Добави</a>
       </div>
 
     </div>
 
-    <div *ngIf="fullCart.length === 0" class="border-bottom border-dark-subtle py-3">
-      <h5 class="text-center text-light-green">Все още нямате продукти в количката!</h5>
-    </div>
+  </div>
+</div>
 
-    <div class="my-3">
-      <h5 class="fs-18px">Тотал: {{totalRegularPrice}} лв.</h5>
-      <h5 class="fs-18px">Отстъпка: <span class="text-light-green">-{{totalDiscount}} лв.</span></h5>
-      <h5 class="fs-18px">Крайна цена: {{totalPrice}} лв.</h5>
-    </div>
+<div class="offcanvas-footer border-top">
+  <div class="row align-items-center">
+    <div class="col-sm-4 col-md-4">
+      <div class="d-flex flex-column">
 
-    <div class="container-fluid mt-4">
-      <div class="row align-items-center">
-        <div class="col-sm-12 col-md-6">
-          <button class="btn btn-primary-dark" routerLink="/">Към количката</button>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <button class="btn btn-secondary-dark" routerLink="/">Приключване на поръчката</button>
-        </div>
+        <span class="text-secondary">Total: <span class="fw-600 text-light-green">{{totalPrice}} лв</span></span>
+        <span class="text-secondary fs-14px">Спестявате: <span class="text-light-blue fw-600">{{totalDiscount}} лв</span></span>
       </div>
+    </div>
+    <div class="col-sm-8 col-md-8">
+      <a class="btn btn-primary w-100 py-2" routerLink="/checkout">Приключване на поръчката</a>
     </div>
   </div>
+</div>
+

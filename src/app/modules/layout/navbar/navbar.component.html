@@ -80,7 +80,7 @@
 
   <!--SEARCH-->
       <div class="d-flex align-items-center w-25">
-        <input type="search" placeholder="Търси" class="nav-search" [(ngModel)]="searchValue" (keyup.enter)="searchProduct()">
+        <input type="search" placeholder="Търси" class="nav-search" [ngModel]="searchValue" (ngModelChange)="searchProduct($event)">
         <fa-icon [icon]="icons['faMagnifyingGlass']" class="search-icon" *ngIf="searchValue === ''"></fa-icon>
       </div>
 
@@ -123,5 +123,5 @@
 </ng-template>
 
 <ng-template #cart>
-  <app-cart-modal [componentDesign]="'navigation'"></app-cart-modal>
+  <app-cart-modal class="h-100" [componentDesign]="'navigation'"></app-cart-modal>
 </ng-template>

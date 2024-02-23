@@ -1,0 +1,53 @@
+<div class="bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9">
+
+        <!--STEPS PROCESS-->
+        <div class="d-flex justify-content-center position-relative my-4">
+
+          <div class="d-flex flex-column align-items-center">
+            <div class="checkout-progress position-relative z-3" [ngClass]="{'active': activeStep === 1, 'done': activeStep > 1}">1</div>
+            <span class="text-secondary fs-12px text-center mt-2">Основна <br> информация</span>
+          </div>
+
+          <div class="checkout-progress-bar position-absolute z-1" style="left: 17% !important"></div>
+          <div class="empty-bar"></div>
+
+          <div class="d-flex flex-column align-items-center">
+            <div class="checkout-progress position-relative z-3" [ngClass]="{'active': activeStep === 2, 'done': activeStep > 2}">2</div>
+            <span class="text-secondary fs-12px text-center mt-2">Доставка <br> &nbsp;</span>
+          </div>
+
+          <div class="checkout-progress-bar position-absolute z-1" style="left: 40%"></div>
+          <div class="empty-bar"></div>
+
+          <div class="d-flex flex-column align-items-center">
+            <div class="checkout-progress position-relative z-3" [ngClass]="{'active': activeStep === 3, 'done': activeStep > 3}">3</div>
+            <span class="text-secondary fs-12px text-center mt-2">Плащане <br> &nbsp;</span>
+          </div>
+
+          <div class="checkout-progress-bar position-absolute z-1" style="left: 62%"></div>
+          <div class="empty-bar"></div>
+
+          <div class="d-flex flex-column align-items-center">
+            <div class="checkout-progress position-relative z-3" [ngClass]="{'active': activeStep === 4, 'done': activeStep > 4}">4</div>
+            <span class="text-secondary fs-12px text-center mt-2">Преглед <br> &nbsp;</span>
+          </div>
+
+        </div>
+        <ng-container *ngIf="activeStep === 1">
+          <app-checkout-information (update)="receiveData($event)"></app-checkout-information>
+        </ng-container>
+        <ng-container *ngIf="activeStep === 2">
+          <app-checkout-delivery (update)="receiveData($event)"></app-checkout-delivery>
+        </ng-container>
+      </div>
+
+      <!--ORDER SUMMARY-->
+      <div class="col-sm-12 col-md-3">
+
+      </div>
+    </div>
+  </div>
+</div>

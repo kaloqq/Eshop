@@ -95,3 +95,6 @@
   padding: 15px 30px;
 }
 
+::ng-deep .cart-offcanvas {
+  width: 550px !important;
+}

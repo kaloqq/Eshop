@@ -204,12 +204,12 @@
 
     <div class="row gx-3 gy-2 mt-5">
 
-      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered()" (mouseleave)="catHovered()">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('promotions')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/cat-img-promo.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Промоции</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="promotions" [ngClass]="{'d-none': isCatHovered !== 'promotions', 'd-block': isCatHovered === 'promotions'}">
               <ul class="text-white fs-12px my-2">
                 <li>Матраци</li>
                 <li>Възглавници</li>
@@ -222,12 +222,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-6 position-relative">
+      <div class="col-sm-12 col-md-6 position-relative" (mouseenter)="catHovered('mattresses')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/cat-img-mattresses.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Матраци</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="mattresses" [ngClass]="{'d-none': isCatHovered !== 'mattresses', 'd-block': isCatHovered == 'mattresses'}">
               <ul class="text-white fs-12px my-2">
                 <li>Ортопедични матраци</li>
                 <li>Матраци с мемори пяна</li>
@@ -239,12 +239,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-3 position-relative">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('pillows')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/buybycat-vazglavnici.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Възглавници</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="pillows" [ngClass]="{'d-none': isCatHovered !== 'pillows', 'd-block': isCatHovered === 'pillows'}">
               <ul class="text-white fs-12px my-2">
                 <li>Анатомични</li>
                 <li>Ортопедични</li>
@@ -256,12 +256,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-3 position-relative">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('children')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/buybycat-detski.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Детски продукти</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="children" [ngClass]="{'d-none': isCatHovered !== 'children', 'd-block': isCatHovered === 'children'}">
               <ul class="text-white fs-12px my-2">
                 <li>Матраци</li>
                 <li>Възглавници</li>
@@ -274,12 +274,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-3 position-relative">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('top-mattresses')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/buybycat-topmatraci.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Топ матраци</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="top-mattresses" [ngClass]="{'d-none': isCatHovered !== 'top-mattresses', 'd-block': isCatHovered === 'top-mattresses'}">
               <ul class="text-white fs-12px my-2">
                 <li>Ортопедични</li>
                 <li>С мемори пяна</li>
@@ -289,12 +289,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-3 position-relative">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('bed-linen')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/buybycat-spalno.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Спално бельо</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="bed-linen" [ngClass]="{'d-none': isCatHovered !== 'bed-linen', 'd-block': isCatHovered === 'bed-linen'}">
               <ul class="text-white fs-12px my-2">
                 <li>Спални комплекти</li>
                 <li>Чаршафи</li>
@@ -307,12 +307,12 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-3 position-relative">
+      <div class="col-sm-12 col-md-3 position-relative" (mouseenter)="catHovered('accessories')" (mouseleave)="catHovered('')">
         <img src="assets/images/common/buybycat-accesoari.webp" class="img-fluid rounded-3">
         <div class="position-absolute cat-box">
           <div class="cat-box-content">
             <a routerLink="/"><h3 class="text-white fs-6 mb-0 fw-bold">Аксесоари</h3></a>
-            <div class="cat-box-desc" [ngClass]="{'d-none': !isCatHovered, 'd-block': isCatHovered}">
+            <div class="cat-box-desc" id="accessories" [ngClass]="{'d-none': isCatHovered !== 'accessories', 'd-block': isCatHovered === 'accessories'}">
               <ul class="text-white fs-12px my-2">
                 <li>Олекотени завивки</li>
                 <li>Протектори за матраци</li>
