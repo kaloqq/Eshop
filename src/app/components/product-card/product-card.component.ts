@@ -78,7 +78,7 @@ export class ProductCardComponent implements OnInit{
   }
 
   navigateProduct(id,name){
-    this.router.navigate(['p',name,id])
+    this.router.navigate(['/',name], {state: {productID: id}});
   }
 
   calculateProgress(value, element){

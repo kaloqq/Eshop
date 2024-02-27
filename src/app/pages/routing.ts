@@ -24,7 +24,7 @@ const routes: Routes = [
     component: CheckoutComponent
   },
   {
-    path: 'p/:name/:id',
+    path: ':name',
     component: ProductPageComponent
   },
   {

@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit{
   }
 
   catHovered(value){
-    console.log(value);
     this.isCatHovered = value;
   }
 

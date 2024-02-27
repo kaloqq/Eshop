@@ -10,7 +10,7 @@ import {
   faStar as faStarSolid, faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {DataService} from "../../data.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 
 
@@ -54,8 +54,10 @@ export class ProductPageComponent implements OnInit{
     private dataService: DataService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    private offCanvasService: NgbOffcanvas
+    private offCanvasService: NgbOffcanvas,
+    private router: Router
   ) {
+    this.productID = this.router.getCurrentNavigation().extras.state['productID'];
   }
 
   ngOnInit() {
