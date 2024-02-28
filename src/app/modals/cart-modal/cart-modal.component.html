@@ -1,12 +1,12 @@
 <div class="offcanvas-header border-bottom">
   <div class="d-flex align-items-center w-100">
     <button type="button" class="btn-close" (click)="close()"></button>
-    <h6 class="offcanvas-title w-100 text-center">Количка ({{fullCart.length}})</h6>
+    <h6 class="offcanvas-title w-100 text-center">Количка ({{fullCart ? fullCart.length : '0'}})</h6>
   </div>
 </div>
 <div class="offcanvas-body p-4">
 
-  <div class="d-flex flex-column gap-3" *ngIf="fullCart.length !== 0">
+  <div class="d-flex flex-column gap-3" *ngIf="fullCart && fullCart.length !== 0">
     <div class="d-flex justify-content-between" *ngFor="let pr of fullCart, let i = index">
 
       <div class="d-flex gap-4" >
@@ -50,6 +50,10 @@
     </div>
 
   </div>
+
+  <div *ngIf="!fullCart">
+    <h4 class="text-center">Количката е празна!</h4>
+  </div>
 </div>
 
 <div class="offcanvas-footer border-top">
@@ -62,7 +66,7 @@
       </div>
     </div>
     <div class="col-sm-8 col-md-8">
-      <a class="btn btn-primary w-100 py-2" routerLink="/checkout">Приключване на поръчката</a>
+      <a class="btn btn-primary w-100 py-2" (click)="navigateCheckout()">Приключване на поръчката</a>
     </div>
   </div>
 </div>

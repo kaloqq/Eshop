@@ -34,6 +34,10 @@ import {CheckoutComponent} from "./pages/checkout/checkout.component";
 import {CheckoutInformationComponent} from "./components/checkout-information/checkout-information.component";
 import {CheckoutDeliveryComponent} from "./components/checkout-delivery/checkout-delivery.component";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import {CookiesBarComponent} from "./components/cookies-bar/cookies-bar.component";
+import {TermsAndConditionsComponent} from "./pages/terms-and-conditions/terms-and-conditions.component";
+import {SignedinModalComponent} from "./modals/signedin-modal/signedin-modal.component";
 
 
 
@@ -52,7 +56,10 @@ import {NgSelectModule} from "@ng-select/ng-select";
       CartModalComponent,
       CheckoutComponent,
       CheckoutInformationComponent,
-      CheckoutDeliveryComponent
+      CheckoutDeliveryComponent,
+      CookiesBarComponent,
+      TermsAndConditionsComponent,
+      SignedinModalComponent
     ],
     imports: [
       BrowserModule,
@@ -71,7 +78,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
       NgbCarouselModule,
       NgxPaginationModule,
       AuthModule,
-      NgSelectModule
+      NgSelectModule,
+      SocialLoginModule
     ],
     bootstrap: [AppComponent],
   exports: [
@@ -80,6 +88,21 @@ import {NgSelectModule} from "@ng-select/ng-select";
   ],
     providers: [
       provideClientHydration(),
+      {
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+          autoLogin: false,
+          providers: [
+            {
+              id: FacebookLoginProvider.PROVIDER_ID,
+              provider: new FacebookLoginProvider('372072685655280')
+            }
+          ],
+          onError: (err) => {
+            console.error(err);
+          }
+        } as SocialAuthServiceConfig,
+      }
     ]
 })
 export class AppModule {}

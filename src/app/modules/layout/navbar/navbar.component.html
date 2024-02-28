@@ -3,123 +3,149 @@
 
     <div class="container d-flex align-items-center justify-content-between py-3 px-5">
 
-    <div class="d-flex gap-3 align-items-center">
-      <div class="fs-12px fw-bold secondary-hover">
-        <a class="text-decoration-none fw-bolder" href="tel:00359899312001">(+359) 899 312 001<br>
-          <small>за поръчки</small></a>
+      <div class="d-flex gap-3 align-items-center">
+        <div class="fs-12px fw-bold secondary-hover">
+          <a class="text-decoration-none fw-bolder" href="tel:00359899312001">(+359) 899 312 001<br>
+            <small>за поръчки</small></a>
+        </div>
+
+        <div class="fw-bold">
+          <a routerLink="/" class="primary-hover d-flex align-items-center">
+            <img src="assets/images/icons/by-request.svg" class="btn-icon m-0 size-42px">
+            <p class="fs-12px fw-bolder mb-0">Матрак<br> по поръчка</p>
+          </a>
+        </div>
       </div>
 
-      <div class="fw-bold">
-        <a routerLink="/" class="primary-hover d-flex align-items-center">
-          <img src="assets/images/icons/by-request.svg" class="btn-icon m-0 size-42px">
-          <p class="fs-12px fw-bolder mb-0">Матрак<br> по поръчка</p>
-        </a>
-      </div>
-    </div>
+      <a routerLink="/">
+        <img src="data:image/webp;base64,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">
+      </a>
 
-    <a routerLink="/">
-      <img src="data:image/webp;base64,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">
-    </a>
+      <div class="d-flex gap-4 align-items-center">
+        <div class="fw-bold primary-hover">
+          <a routerLink="/" class="text-decoration-none">
+            <img src="assets/images/icons/information.svg" class="btn-icon m-0 size-20px" >
+            За нас
+          </a>
+        </div>
 
-    <div class="d-flex gap-4 align-items-center">
-      <div class="fw-bold primary-hover">
-        <a routerLink="/" class="text-decoration-none">
-          <img src="assets/images/icons/information.svg" class="btn-icon m-0 size-20px" >
-          За нас
-        </a>
-      </div>
-
-      <div class="d-flex gap-3 fw-bold">
-        <a routerLink="/" ><fa-icon [icon]="icons['faHeart']"></fa-icon></a>
-        <a routerLink="/" ><fa-icon [icon]="icons['faCart']" (click)="openCart()"></fa-icon></a>
+        <div class="d-flex gap-3 fw-bold">
+          <a routerLink="/" ><fa-icon [icon]="icons['faHeart']"></fa-icon></a>
+          <a routerLink="/" ><fa-icon [icon]="icons['faCart']" (click)="openCart()"></fa-icon></a>
 
 
-<!--LOGIN DROPDOWN-->
-        <div ngbDropdown placement="bottom-end" class="d-flex align-items-center text-sale fw-bold h-100 account-dropdown" #account (mouseenter)="saleHover('account')" (mouseleave)="saleHover('account')">
+          <!--LOGIN DROPDOWN-->
+          <ng-container *ngIf="!isUserSignedIn">
+            <div ngbDropdown placement="bottom-end" class="d-flex align-items-center text-sale fw-bold h-100 account-dropdown" #registerLogin (mouseenter)="saleHover('register-login')" (mouseleave)="saleHover('register-login')">
           <span class="fw-bolder pointer" ngbDropdownToggle >
             <a routerLink="/" ><fa-icon [icon]="icons['faUser']" class="py-1" (click)="openLoginModal()"></fa-icon></a>
           </span>
-          <div ngbDropdownMenu aria-labelledby="mattresses">
-            <h5 class="fw-700 text-center">Все още не сте влязъл в профила си</h5>
-            <a class="btn btn-secondary-dark d-block rounded-1 mt-4" (click)="openLoginModal()">Вход</a>
-          </div>
+              <div ngbDropdownMenu aria-labelledby="register/login" >
+                <h5 class="fw-700 text-center">Все още не сте влязъл в профила си</h5>
+                <a class="btn btn-secondary-dark d-block rounded-1 mt-4" (click)="openLoginModal()">Вход</a>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="isUserSignedIn">
+            <div ngbDropdown placement="bottom-end" class="d-flex align-items-center text-sale fw-bold h-100 account-dropdown" #account (mouseenter)="saleHover('account')" (mouseleave)="saleHover('account')">
+          <span class="fw-bolder pointer" ngbDropdownToggle >
+            <a routerLink="/" ><fa-icon [icon]="icons['faUser']" class="py-1"></fa-icon></a>
+          </span>
+              <div ngbDropdownMenu aria-labelledby="account">
+                <a class="btn btn-primary" (click)="signOut()">Изход</a>
+              </div>
+            </div>
+          </ng-container>
+
+
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
 
   </div>
 
   <div class=" border-bottom border-light-subtle">
     <div class="container d-flex align-items-center justify-content-between h-65px">
-  <!--PRODUCTS ON SALE-->
-        <div ngbDropdown autoClose="outside" class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
+      <!--PRODUCTS ON SALE-->
+      <div ngbDropdown autoClose="outside" class="d-flex align-items-center text-sale fw-bold h-100 sale-dropdown" #sale (mouseenter)="saleHover('sale')" (mouseleave)="saleHover('sale')">
           <span class="fw-bolder pointer" ngbDropdownToggle >
           <img src="assets/images/icons/sale.svg" class="btn-icon m-0">
             Промоции
           </span>
-          <div ngbDropdownMenu aria-labelledby="mattresses">
-            <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-              <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
-              Матраци в промоция</a>
-            <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-              <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
-              Топ матраци в промоция</a>
-            <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-              <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
-              Възглавници в промоция</a>
-            <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-              <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
-              Спално бельо в промоция</a>
-            <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
-              <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
-              Аксесоари в промоция</a>
-          </div>
+        <div ngbDropdownMenu aria-labelledby="mattresses">
+          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+            <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
+            Матраци в промоция</a>
+          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+            <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
+            Топ матраци в промоция</a>
+          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+            <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
+            Възглавници в промоция</a>
+          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+            <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
+            Спално бельо в промоция</a>
+          <a routerLink="/" class="text-sale-hover" ngbDropdownItem>
+            <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
+            Аксесоари в промоция</a>
         </div>
-
-  <!--SEARCH-->
-      <div class="d-flex align-items-center w-25">
-        <input type="search" placeholder="Търси" class="nav-search" [ngModel]="searchValue" (ngModelChange)="searchProduct($event)">
-        <fa-icon [icon]="icons['faMagnifyingGlass']" class="search-icon" *ngIf="searchValue === ''"></fa-icon>
       </div>
 
-  <!--MAIN MENU-->
+      <!--SEARCH-->
+      <div class="d-flex flex-column w-25">
+        <div class="d-flex align-items-center position-relative w-100">
+          <input type="search" placeholder="Търси" class="nav-search" [ngModel]="searchValue" (ngModelChange)="searchProduct($event)">
+          <fa-icon [icon]="icons['faMagnifyingGlass']" class="position-absolute search-icon end-7" *ngIf="searchValue === ''"></fa-icon>
+        </div>
+        <div ngbDropdown placement="bottom-end" class="d-flex search-dropdown fw-bold w-25" #searchContainer>
+          <div ngbDropdownMenu >
+            <a class="pointer fs-14px d-block py-2 px-4"  *ngFor="let item of searchItems; let i = index" (click)="searchNavigate(item)">{{item.name_bg}}</a>
+          </div>
+        </div>
+      </div>
 
-        <div class="d-flex align-items-center">
-          <div ngbDropdown autoClose="outside" placement="bottom-end" class="d-flex py-1 align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
+      <!--MAIN MENU-->
+
+      <div class="d-flex align-items-center">
+        <div ngbDropdown autoClose="outside" placement="bottom-end" class="d-flex py-1 align-items-center text-secondary-hover fw-bold h-100 categories-dropdown" #categories  (mouseenter)="saleHover('categories')" (mouseleave)="saleHover('categories')">
           <span class="fw-bolder pointer" ngbDropdownToggle >
             Категории
           </span>
-            <div ngbDropdownMenu aria-labelledby="categories">
-              <a [routerLink]="['/c/mattresses',1,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
-                Матраци</a>
-              <a [routerLink]="['/c/top-mattresses',2,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
-                Топ матраци</a>
-              <a [routerLink]="['/c/pillows',3,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
-                Възглавници</a>
-              <a [routerLink]="['/c/bed-linen',4,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
-                Спално бельо</a>
-              <a [routerLink]="['/c/children',5,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/children.svg" class="size-48px m-0">
-                Детски продукти</a>
-              <a  [routerLink]="['/c/accessories',6,0,1,'']" class="secondary-hover" ngbDropdownItem>
-                <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
-                Аксесоари</a>
-            </div>
+          <div ngbDropdownMenu aria-labelledby="categories">
+            <a [routerLink]="['/c/mattresses',1,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/mattress-sale.svg" class="size-48px m-0">
+              Матраци</a>
+            <a [routerLink]="['/c/top-mattresses',2,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/top-mattresses-sale.svg" class="size-48px m-0">
+              Топ матраци</a>
+            <a [routerLink]="['/c/pillows',3,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/pillows-sale.svg" class="size-48px m-0">
+              Възглавници</a>
+            <a [routerLink]="['/c/bed-linen',4,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/linen-sale.svg" class="size-48px m-0">
+              Спално бельо</a>
+            <a [routerLink]="['/c/children',5,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/children.svg" class="size-48px m-0">
+              Детски продукти</a>
+            <a  [routerLink]="['/c/accessories',6,0,1,'']" class="secondary-hover" ngbDropdownItem>
+              <img src="assets/images/icons/accessories-sale.svg" class="size-48px m-0">
+              Аксесоари</a>
           </div>
         </div>
+      </div>
 
     </div>
   </div>
 </nav>
 
 <ng-template #login>
-  <app-login-register></app-login-register>
+  <app-login-register (userSignedIn)="userSignedIn()"></app-login-register>
+</ng-template>
+
+<ng-template #signedIn>
+  <app-signedin-modal></app-signedin-modal>
 </ng-template>
 
 <ng-template #cart>

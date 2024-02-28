@@ -27,6 +27,11 @@ export class AuthService implements OnDestroy {
     return true;
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
 
   ngOnDestroy() {
     console.log('test')

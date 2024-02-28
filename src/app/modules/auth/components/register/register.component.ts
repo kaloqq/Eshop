@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF} from "@fortawesome/free-brands-svg-icons";
 import {DataService} from "../../../../data.service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ConfirmPasswordValidator} from "./confirm-password.validator";
 import {AuthService} from "../../services/auth.service";
+import {FacebookLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {FacebookService} from "ngx-facebook";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-register',
@@ -12,9 +15,12 @@ import {AuthService} from "../../services/auth.service";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit{
+  @Output() closeAndUpdate = new EventEmitter;
   registrationForm: FormGroup;
   public formErrors;
   public isFormInvalid;
+
+
   icons = {
     'faTimes': faTimes,
     'faFacebookF': faFacebookF,
@@ -23,7 +29,9 @@ export class RegisterComponent implements OnInit{
   constructor(
     private dataService: DataService,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private socialAuthService: SocialAuthService,
+    public toastr: ToastrService
   ) {
   }
 
@@ -77,7 +85,6 @@ export class RegisterComponent implements OnInit{
   }
 
   register(){
-    console.log(this.registrationForm.get('email'))
     if(this.registrationForm.valid){
       var data = [];
       data['controller'] = 'base';
@@ -91,6 +98,8 @@ export class RegisterComponent implements OnInit{
           res['data'].token,
           res['data'].user_id
         )
+        this.toastr.success('Успешна регистрация!');
+        this.closeAndUpdate.emit();
       });
     } else {
       this.isFormInvalid = true;
@@ -110,6 +119,10 @@ export class RegisterComponent implements OnInit{
       }
     });
     return errors;
+  }
+
+  loginWithFacebook(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
 }

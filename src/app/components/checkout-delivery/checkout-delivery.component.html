@@ -29,7 +29,11 @@
     <div class="row" *ngIf="deliverData['office_type'] === 'office_econt'">
       <div class="col-sm-12 col-md-12">
         <label class="form-label">Адрес на Еконт офис</label>
-        <ng-select></ng-select>
+        <ng-select
+          [(ngModel)]="data['office_code']"
+          [items]="econtOffices"
+          (search)="getEcontOffice($event)"
+        ></ng-select>
       </div>
     </div>
 

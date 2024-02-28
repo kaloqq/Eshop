@@ -5,6 +5,7 @@ import {ContactsComponent} from "./contacts/contacts.component";
 import {ProductPageComponent} from "./product-page/product-page.component";
 import {CategoryPageComponent} from "./category-page/category-page.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
+import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'c/:name/:category/:trademark/:page/:search',
     component: CategoryPageComponent
+  },
+  {
+    path: 'terms-and-conditions',
+    component: TermsAndConditionsComponent
   },
   {
     path: '**',

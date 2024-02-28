@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgForOf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {
   faCircleCheck, faTimes
 } from "@fortawesome/free-solid-svg-icons";
@@ -27,7 +27,8 @@ export class CartModalComponent implements OnInit{
   constructor(
     private toastr: ToastrService,
     private cdr: ChangeDetectorRef,
-    private offCanvasService: NgbOffcanvas
+    private offCanvasService: NgbOffcanvas,
+    private router: Router
   ) {
   }
 
@@ -41,13 +42,16 @@ export class CartModalComponent implements OnInit{
     this.totalRegularPrice = 0;
     this.totalPrice = 0;
     this.totalDiscount = 0;
-    this.fullCart.forEach((el) => {
-      this.totalRegularPrice += el.qty * Number(el.regularPrice);
-      if(el.promoPrice){
-        this.totalDiscount += (Number(el.regularPrice) - Number(el.promoPrice)) * el.qty;
-      }
-      this.totalPrice = this.totalRegularPrice - this.totalDiscount;
-    })
+    if(this.fullCart){
+
+      this.fullCart.forEach((el) => {
+        this.totalRegularPrice += el.qty * Number(el.regularPrice);
+        if(el.promoPrice){
+          this.totalDiscount += (Number(el.regularPrice) - Number(el.promoPrice)) * el.qty;
+        }
+        this.totalPrice = this.totalRegularPrice - this.totalDiscount;
+      })
+    }
   }
 
   removeItemFromCart(index){
@@ -68,6 +72,11 @@ export class CartModalComponent implements OnInit{
     this.calculatePrices();
     localStorage.setItem('cart', JSON.stringify(this.fullCart));
     this.cdr.detectChanges();
+  }
+
+  navigateCheckout(){
+    this.close();
+    this.router.navigate(['/checkout']);
   }
 
   close(){

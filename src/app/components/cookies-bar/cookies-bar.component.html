@@ -1,0 +1,14 @@
+<div class="bg-white position-fixed border-top bottom-0 w-100 p-3 z-3" *ngIf="!cookieMessage">
+  <div class="row gy-3 gy-md-0">
+    <div class="col-sm-12 col-md-8">
+      <p class="mb-0" style="font-size: 12px;">Този уебсайт използва бисквитки за профилиране на трета страна. За да научиш повече и как да променяш настройките си, кликни на бутон "Общи условия". Като затвориш този прозорец или като продължиш да разглеждаш този сайт, ти се съгласяваш с използването на тези бисквитки.</p>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="d-flex gap-2 justify-content-end">
+        <a (click)="consentCookies('terms')" class="btn btn-secondary-dark h-100 rounded-5 w-100 btn-sm">Общи условия</a>
+        <a (click)="consentCookies('close')" class="btn btn-primary-dark rounded-5 w-100 btn-sm">Затвори</a>
+      </div>
+    </div>
+  </div>
+</div>
+

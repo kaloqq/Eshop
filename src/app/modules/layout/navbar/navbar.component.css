@@ -87,12 +87,16 @@
 }
 
 .search-icon {
-  transform: translateX(-35px);
+  right: 8%;
 }
 
 .account-dropdown .dropdown-menu{
   width: 400px;
   padding: 15px 30px;
+}
+
+.search-dropdown .dropdown-menu{
+  width: 324px;
 }
 
 ::ng-deep .cart-offcanvas {
